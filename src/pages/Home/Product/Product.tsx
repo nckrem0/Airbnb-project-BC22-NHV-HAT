@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination } from "swiper";
 const Product = () => {
+    console.log("ádasdasdasd");
     return (
         <div>
             <div className=" grid grid-cols-4 gap-8 2xl:max-w-7xl 2xl:mx-auto pt-10">
