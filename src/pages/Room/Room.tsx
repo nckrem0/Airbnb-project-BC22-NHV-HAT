@@ -61,7 +61,7 @@ const Room = () => {
                                             <SwiperSlide>
                                                 <img
                                                     src={room?.image}
-                                                    alt="photo"
+                                                    alt={room?.name}
                                                     className=" w-full h-72 object-cover rounded-2xl"
                                                 />
                                             </SwiperSlide>
