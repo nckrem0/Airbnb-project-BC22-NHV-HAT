@@ -4,6 +4,7 @@ import location from "slices/location";
 import room from "slices/room";
 import review from "slices/review";
 import roomdetail from "slices/room-details";
+import signup from "slices/signup";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     roomdetail,
     review,
     auth,
+    signup,
   },
 });
 
