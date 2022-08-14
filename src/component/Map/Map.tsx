@@ -3,7 +3,8 @@ import ReactMapGL, { Marker } from "react-map-gl";
 import { IoMdPin } from "react-icons/io";
 import { IRoom } from "interfaces/rooms";
 import * as geolib from "geolib";
-import "mapbox-gl/dist/mapbox-gl.css";
+// import "mapbox-gl/dist/mapbox-gl.css";
+import { MapConfig } from "enum/config.enum";
 
 type Props = {
     searchResults: IRoom[];
@@ -28,14 +29,14 @@ const Map = (props: Props) => {
     const [viewState, setViewState] = useState({
         longitude: centerCoordinate.longitude,
         latitude: centerCoordinate.latitude,
-        zoom: 7,
+        zoom: 15,
     });
 
     return (
         <ReactMapGL
             {...viewState}
-            mapStyle="mapbox://styles/nckrem/cl6rooi70003z14n0rg8smzru"
-            mapboxAccessToken="pk.eyJ1IjoibmNrcmVtIiwiYSI6ImNsNnJvbDBvMjBjbnIzZnF0Z3N2cGRvam4ifQ.mo96a9R_5ul7E2Gms1YRbg"
+            mapStyle={MapConfig.STYLES}
+            mapboxAccessToken={MapConfig.TOKEN}
             style={{ width: "100%", height: "100%" }}
             onMove={(evt) => setViewState(evt.viewState)}
             attributionControl={false}

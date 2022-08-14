@@ -12,12 +12,18 @@ import "swiper/css/navigation";
 import { Pagination } from "swiper";
 import Map from "component/Map/Map";
 
+import { useParams } from "react-router-dom";
+
 const Room = () => {
+    const useParam = useParams();
     const { data, isLoading, error } = useSelector((state: RootState) => state.room);
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
-        dispatch(getRoomsList({}));
-    }, [dispatch]);
+        const split: any = useParam.locationId?.split("&");
+        const locationName = split[0];
+        const locationId = split[1];
+        dispatch(getRoomsList({ locationName, locationId }));
+    }, [dispatch, useParam.locationId]);
     if (isLoading) {
         return <h1>Loading...</h1>;
     }
@@ -54,7 +60,7 @@ const Room = () => {
                                         >
                                             <SwiperSlide>
                                                 <img
-                                                    src={room.image}
+                                                    src={room?.image}
                                                     alt="photo"
                                                     className=" w-full h-72 object-cover rounded-2xl"
                                                 />
@@ -63,7 +69,7 @@ const Room = () => {
                                     </div>
                                     <div className="flex justify-between">
                                         <div>
-                                            <h5 className="font-medium">{room.name}</h5>
+                                            <h5 className="font-medium">{room?.name}</h5>
                                         </div>
                                         <div className="flex items-center">
                                             <AiOutlineStar />
@@ -78,7 +84,7 @@ const Room = () => {
                                         <p className="text-gray-500">Ngày 07 - Ngày 12 tháng 10</p>
                                     </div>
                                     <div className="flex">
-                                        <p className="font-medium">{`${room.price.toLocaleString("vi-VN")} VND/`}</p>
+                                        <p className="font-medium">{`${room?.price.toLocaleString("vi-VN")} VND/`}</p>
                                         <span className="font-normal">đêm</span>
                                     </div>
                                 </div>

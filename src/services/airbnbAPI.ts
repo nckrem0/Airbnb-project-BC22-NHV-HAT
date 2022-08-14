@@ -2,6 +2,8 @@ import { DefaultPerPage } from "enum/airbnb.enum";
 import ILocationList from "interfaces/location-list";
 import { IRoomDetails } from "interfaces/room-details";
 import { IRoom } from "interfaces/rooms";
+import { IReview } from "interfaces/review";
+
 import axiosClients from "./axiosClients";
 
 const airbnbAPI = {
@@ -35,6 +37,9 @@ const airbnbAPI = {
     },
     getRoomDetailList: (detailId: string) => {
         return axiosClients.get<unknown, IRoomDetails>(`/rooms/${detailId}`);
+    },
+    getReviewlList: (roomId: string) => {
+        return axiosClients.get<unknown, IReview[]>(`reviews/byRoom?roomId=${roomId}`);
     },
 };
 
