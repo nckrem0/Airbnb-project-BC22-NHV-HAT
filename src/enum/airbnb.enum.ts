@@ -13,6 +13,10 @@ export enum Action {
   ROOM_DETAIL = "details",
   ROOM_REVIEW = "reviews",
   LOGIN_URL = "LOGIN_URL",
+  REGISTER = "RegisterAPI",
+}
+export enum ACTION_NAME {
+  REGISTER = "register",
 }
 
 export enum DefaultPerPage {
