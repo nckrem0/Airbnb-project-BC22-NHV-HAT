@@ -21,7 +21,7 @@ type Props = {
 const RoomContent = (props: Props) => {
     const { dataRoom } = props;
     return (
-        <div className="flex py-12">
+        <div className="flex pt-12 pb-10">
             <div className="w-2/3">
                 <div className="flex justify-between w-full pb-5">
                     <div>
@@ -94,7 +94,7 @@ const RoomContent = (props: Props) => {
                     </div>
                 </div>
                 <hr />
-                <div className="py-10">
+                <div className="pt-5">
                     <div>
                         <h1 className="font-semibold text-2xl">Tiện Nghi</h1>
                     </div>
@@ -144,73 +144,6 @@ const RoomContent = (props: Props) => {
                         Hiển thị tất cả tiện nghi
                     </button>
                 </div>
-                <hr />
-                <div>
-                    <div className="flex items-center">
-                        <AiFillStar className="text-rose-500" />
-                        <span className="pl-2 font-semibold">4,83(18 đánh giá)</span>
-                    </div>
-                    <div className="flex flex-wrap pt-5">
-                        <div className=" w-1/2 pb-3">
-                            <div className="flex items-center">
-                                <GiFireExtinguisher className="text-2xl" />
-                                <div className="pl-5  ">
-                                    <p className="font-semibold">Nguyễn Văn A</p>
-                                    <p className="text-sm text-gray-500">Tháng 7 năm 2022</p>
-                                </div>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero dolorum dignissimos
-                                laboriosam ipsa laborum aspernatur amet itaque culpa velit sed!
-                            </p>
-                        </div>
-
-                        <div className=" w-1/2 pb-3">
-                            <div className="flex items-center">
-                                <GiFireExtinguisher className="text-2xl" />
-                                <div className="pl-5  ">
-                                    <p className="font-semibold">Nguyễn Văn A</p>
-                                    <p className="text-sm text-gray-500">Tháng 7 năm 2022</p>
-                                </div>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero dolorum dignissimos
-                                laboriosam ipsa laborum aspernatur amet itaque culpa velit sed!
-                            </p>
-                        </div>
-                        <div className=" w-1/2 pb-3">
-                            <div className="flex items-center">
-                                <GiFireExtinguisher className="text-2xl" />
-                                <div className="pl-5  ">
-                                    <p className="font-semibold">Nguyễn Văn A</p>
-                                    <p className="text-sm text-gray-500">Tháng 7 năm 2022</p>
-                                </div>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero dolorum dignissimos
-                                laboriosam ipsa laborum aspernatur amet itaque culpa velit sed!
-                            </p>
-                        </div>
-                        <div className=" w-1/2 pb-3">
-                            <div className="flex items-center">
-                                <GiFireExtinguisher className="text-2xl" />
-                                <div className="pl-5  ">
-                                    <p className="font-semibold">Nguyễn Văn A</p>
-                                    <p className="text-sm text-gray-500">Tháng 7 năm 2022</p>
-                                </div>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero dolorum dignissimos
-                                laboriosam ipsa laborum aspernatur amet itaque culpa velit sed!
-                            </p>
-                        </div>
-                    </div>
-
-                    <button className="p-3 border-solid border-[1px] border-black rounded-xl font-semibold mt-5 mb-7">
-                        Hiển thị tất cả đánh giá
-                    </button>
-                </div>
-                <hr />
             </div>
             <div className="w-1/3 pl-10">
                 <div className="border-solid border-[1px] border-gray-400 p-5 rounded-xl">
@@ -226,12 +159,6 @@ const RoomContent = (props: Props) => {
                     </div>
                     <div className="py-5">
                         <div className="choosedate">
-                            {/* <div className="flex-1 checkin pl-3">
-                                <Checkin />
-                            </div>
-                            <div className="flex-1 checkout pl-3">
-                                <Checkout />
-                            </div> */}
                             <ChooseDateBooking />
                         </div>
                         <div className="addguests w-full">

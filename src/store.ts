@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import location from "slices/location";
 import room from "slices/room";
+import review from "slices/review";
 import roomdetail from "slices/room-details";
 
 const store = configureStore({
@@ -8,6 +9,7 @@ const store = configureStore({
         location,
         room,
         roomdetail,
+        review,
     },
 });
 
