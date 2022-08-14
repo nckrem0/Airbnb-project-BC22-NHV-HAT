@@ -10,6 +10,7 @@ import { getRoomDetailList } from "slices/room-details";
 import { useParams } from "react-router-dom";
 import { IReview } from "interfaces/review";
 import RoomReview from "./RoomReview";
+import { pointsData } from "data/review-points";
 type Props = {};
 
 const RoomDetail = (props: Props) => {
@@ -74,6 +75,31 @@ const RoomDetail = (props: Props) => {
                 <div className="flex items-center">
                     <AiFillStar className="text-rose-500" />
                     <span className="pl-2 font-semibold">4,83(18 đánh giá)</span>
+                </div>
+                <div className="flex flex-wrap">
+                    {pointsData.map((point, index) => {
+                        const percent = ((point.point * 100) / 5).toString();
+                        return (
+                            <div className="w-1/2" key={index}>
+                                <div className="w-4/5">
+                                    <div className="flex justify-between">
+                                        <div>
+                                            <p>{point.name}</p>
+                                        </div>
+                                        <div className="w-1/2 flex items-center ">
+                                            <div className="relative h-1 flex-1 bg-gray-400 rounded-sm">
+                                                <span
+                                                    className={"absolute top-0 left-0 bg-black h-1 rounded-sm"}
+                                                    style={{ width: `${percent}%` }}
+                                                ></span>
+                                            </div>
+                                            <span className="pl-5 w-5">{point.point.toFixed(1)}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
                 <div>
                     <RoomReview roomId={data._id} />

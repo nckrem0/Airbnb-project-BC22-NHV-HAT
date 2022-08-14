@@ -25,4 +25,30 @@ export const dataMaps = {
             longitude: 107.0950256,
         },
     ],
+    nhatrang: [
+        {
+            latitude: 12.2300981,
+            longitude: 109.1982748,
+        },
+        {
+            latitude: 12.2529152,
+            longitude: 109.1899018,
+        },
+        {
+            latitude: 12.2529152,
+            longitude: 109.1899018,
+        },
+        {
+            latitude: 12.2529152,
+            longitude: 109.1899018,
+        },
+        {
+            latitude: 12.2529152,
+            longitude: 109.1899018,
+        },
+        {
+            latitude: 12.1652616,
+            longitude: 109.1960192,
+        },
+    ],
 };

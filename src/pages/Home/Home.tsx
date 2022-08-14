@@ -1,12 +1,11 @@
+import Footer from "component/Footer";
 import Location from "./Location";
-import Product from "./Product/Product";
-import Search from "./Search";
 const Home = () => {
     return (
         <>
-            {/* <Search /> */}
             <Location />
-            {/* <Product /> */}
+            <hr />
+            <Footer />
         </>
     );
 };
