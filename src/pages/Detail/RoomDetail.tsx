@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillStar, AiOutlineHeart, AiOutlineSmallDash } from "react-icons/ai";
 import { GiRibbonMedal } from "react-icons/gi";
 import { FaShare } from "react-icons/fa";
@@ -8,11 +8,13 @@ import { AppDispatch, RootState } from "store";
 import { useDispatch, useSelector } from "react-redux";
 import { getRoomDetailList } from "slices/room-details";
 import { useParams } from "react-router-dom";
+import { IReview } from "interfaces/review";
+import RoomReview from "./RoomReview";
 type Props = {};
 
 const RoomDetail = (props: Props) => {
     const { data, isLoading, error } = useSelector((state: RootState) => state.roomdetail);
-    console.log(data);
+    // const [review, setReview] = useState<IReview>(data);
 
     const urlParams = useParams();
     console.log(urlParams);
@@ -21,6 +23,10 @@ const RoomDetail = (props: Props) => {
     useEffect(() => {
         dispatch(getRoomDetailList(urlParams));
     }, [dispatch, urlParams]);
+    useEffect(() => {});
+    // useEffect(() => {
+    //     setReview(data);
+    // }, [setReview, data]);
     if (isLoading) {
         return <h1>Loading...</h1>;
     }
@@ -62,6 +68,19 @@ const RoomDetail = (props: Props) => {
             </div>
             <div>
                 <RoomContent dataRoom={data} />
+            </div>
+            <hr />
+            <div className="pt-10">
+                <div className="flex items-center">
+                    <AiFillStar className="text-rose-500" />
+                    <span className="pl-2 font-semibold">4,83(18 đánh giá)</span>
+                </div>
+                <div>
+                    <RoomReview roomId={data._id} />
+                </div>
+                <button className="p-3 border-solid border-[1px] border-black rounded-xl font-semibold mt-5 mb-7">
+                    Hiển thị tất cả đánh giá
+                </button>
             </div>
         </div>
     );
