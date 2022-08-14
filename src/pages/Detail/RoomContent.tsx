@@ -12,32 +12,35 @@ import { FiMonitor } from "react-icons/fi";
 import { BsSnow2 } from "react-icons/bs";
 import { MdOutlineBreakfastDining } from "react-icons/md";
 import ChooseDateBooking from "component/Header/ChooseDate/ChooseDateBooking";
-import Checkout from "component/Header/ChooseDate/Checkout";
-import AddMoreGuests from "component/Header/AddMoreGuests";
 import AddGuests from "component/Header/AddMoreGuests/AddGuests";
-import ChooseDate from "component/Header/ChooseDate";
-const RoomContent = () => {
+import { IRoomDetails } from "interfaces/room-details";
+
+type Props = {
+    dataRoom: IRoomDetails;
+};
+const RoomContent = (props: Props) => {
+    const { dataRoom } = props;
     return (
         <div className="flex py-12">
             <div className="w-2/3">
                 <div className="flex justify-between w-full pb-5">
                     <div>
-                        <h1 className="font-semibold text-xl">Nhà mái vòm. Chủ nhà Dorothy</h1>
+                        <h1 className="font-semibold text-xl">{dataRoom.name}</h1>
                         <ol className="flex items-center">
                             <li className="flex items-center">
-                                <span>6 khách</span>
+                                <span>{dataRoom.guests} Khách</span>
                                 <span className="h-8 px-1">.</span>
                             </li>
                             <li className="flex items-center">
-                                <span>1 phòng ngủ</span>
+                                <span>{dataRoom.bedRoom} phòng ngủ</span>
                                 <span className="h-8 px-1">.</span>
                             </li>
                             <li className="flex items-center">
-                                <span>1 giường</span>
+                                <span>{dataRoom.bedRoom} giường</span>
                                 <span className="h-8 px-1">.</span>
                             </li>
                             <li className="flex items-center">
-                                <span>1 phòng tắm</span>
+                                <span>{dataRoom.bath} phòng tắm</span>
                             </li>
                         </ol>
                     </div>

@@ -9,28 +9,26 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination } from "swiper";
-import { IQueryLocation } from "interfaces/query";
 
 const Location = () => {
     const { data, isLoading, error } = useSelector((state: RootState) => state.location);
 
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
-        console.log("here");
         dispatch(getLocationList({}));
     }, [dispatch]);
-    // if (isLoading) {
-    //     return <h1>Loading...</h1>;
-    // }
-    // if (error) {
-    //     return <h1>Error...</h1>;
-    // }
+    if (isLoading) {
+        return <h1>Loading...</h1>;
+    }
+    if (error) {
+        return <h1>Error...</h1>;
+    }
 
     return (
         <div className=" grid grid-cols-4 gap-8 2xl:max-w-7xl 2xl:mx-auto pt-10">
             {data?.map((location, index) => {
                 return (
-                    <div className="text-base">
+                    <div key={index} className="text-base">
                         <div className="pb-2">
                             <Swiper
                                 pagination={{
