@@ -1,0 +1,12 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry",
+        "corejs": "3.22",
+        "browsersList": ">0.2%, not dead, not ie 11, not chrome < 51, not safari < 10, not android < 51"
+      }
+    ]
+  ]
+}
