@@ -8,21 +8,21 @@ import MainTemplate from "template/MainTemplate";
 import Signup from "pages/Signup";
 
 function App() {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<MainTemplate />}>
-          <Route path="rooms/:locationId/:detailId" element={<RoomDetail />} />
-          <Route path="rooms/:locationId/" element={<Room />} />
-          <Route path="host/:homes" element={<Host />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<MainTemplate />}>
+                    <Route path="rooms/:locationId/:detailId" element={<RoomDetail />} />
+                    <Route path="rooms/:locationId" element={<Room />} />
+                    <Route path="host/:homes" element={<Host />} />
+                    <Route path="login" element={<Login />} />
+                    <Route path="signup" element={<Signup />} />
 
-          <Route index element={<Home />} />
-        </Route>
-      </Routes>
-    </>
-  );
+                    <Route index element={<Home />} />
+                </Route>
+            </Routes>
+        </>
+    );
 }
 
 export default App;

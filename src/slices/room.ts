@@ -24,27 +24,22 @@ export const getRoomsList = createAsyncThunk(EnumThunkAction.GET_ROOM_LIST, asyn
 
         // add latitude and longtitude
         try {
-            switch (locationName) {
-                case "vungtau":
-                    data.map((item, index) => {
-                        if (index > dataMaps.vungtau.length - 1) {
-                            item.latitude = dataMaps.vungtau[0].latitude;
-                            item.longitude = dataMaps.vungtau[0].longitude;
-                        } else {
-                            item.latitude = dataMaps.vungtau[index].latitude;
-                            item.longitude = dataMaps.vungtau[index].longitude;
-                        }
+            for (const [key, value] of Object.entries(dataMaps)) {
+                switch (key.toLowerCase()) {
+                    case locationName.toLowerCase():
+                        data.map((item, index) => {
+                            if (index > value.length - 1) {
+                                item.latitude = value[0].latitude;
+                                item.longitude = value[0].longitude;
+                            } else {
+                                item.latitude = value[index].latitude;
+                                item.longitude = value[index].longitude;
+                            }
 
-                        return item;
-                    });
-                    break;
-                default:
-                    data.map((item, index) => {
-                        item.latitude = 15.995;
-                        item.longitude = 105.856;
-                        return item;
-                    });
-                    break;
+                            return item;
+                        });
+                        break;
+                }
             }
         } catch (error) {}
         return data;

@@ -25,7 +25,7 @@ const Location = () => {
     }
 
     return (
-        <div className=" grid grid-cols-4 gap-8 2xl:max-w-7xl 2xl:mx-auto pt-10">
+        <div className=" grid grid-cols-4 gap-8 2xl:max-w-7xl 2xl:mx-auto py-10">
             {data?.map((location, index) => {
                 return (
                     <div key={index} className="text-base">
