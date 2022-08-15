@@ -79,7 +79,7 @@ const ChooseDate = (props: Props) => {
         <div className="pb-1 ">{`Trả Phòng ${new Date(
           endDate
         ).getDate()}`}</div>
-        <div className="text-gray-400 text-sm ">Thêm Ngày</div>
+        <div className="text-gray-400 text-sm ">Thêm Ngày Ngày</div>
       </div>
       <div className="flex hover:bg-gray-300 rounded-[32px] transition-all duration-300 ">
         <AddMoreGuests />
