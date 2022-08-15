@@ -9,10 +9,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination } from "swiper";
+import { useNavigate } from "react-router-dom";
+import { removeVietnameseTones } from "convert/ConvertVie";
 
 const Location = () => {
     const { data, isLoading, error } = useSelector((state: RootState) => state.location);
-
+    const navigation = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(getLocationList({}));
@@ -23,12 +25,18 @@ const Location = () => {
     if (error) {
         return <h1>Error...</h1>;
     }
-
+    const gotoRoomsByLocationId = (name: string, _id: string) => {
+        navigation(`../rooms/${name}&${_id}`);
+    };
     return (
         <div className=" grid grid-cols-4 gap-8 2xl:max-w-7xl 2xl:mx-auto py-10">
             {data?.map((location, index) => {
                 return (
-                    <div key={index} className="text-base">
+                    <div
+                        key={index}
+                        className="text-base cursor-pointer"
+                        onClick={() => gotoRoomsByLocationId(removeVietnameseTones(location.name), location._id)}
+                    >
                         <div className="pb-2">
                             <Swiper
                                 pagination={{
@@ -39,7 +47,7 @@ const Location = () => {
                             >
                                 <SwiperSlide>
                                     <img
-                                        src={`https://a0.muscache.com/im/pictures/e24c13b9-dd2a-4e15-9845-dd588a884e39.jpg?im_w=720`}
+                                        src={location.image}
                                         alt="photo"
                                         className=" w-full h-72 object-cover rounded-2xl"
                                     />
@@ -60,11 +68,14 @@ const Location = () => {
                             <p className="text-gray-500">Cách 3.994 km</p>
                         </div>
                         <div>
-                            <p className="text-gray-500">Ngày 07 - Ngày 12 tháng 10</p>
+                            <p className="text-gray-500">
+                                Thuộc {location.province} , {location.country}
+                            </p>
+                            <p className="">Được đánh giá {location.valueate}/10 tại khu vực này</p>
                         </div>
                         <div className="flex">
-                            <p className="font-medium">$600</p>
-                            <span className="font-normal">đêm</span>
+                            <p className="font-medium">500.000 ~ 1.000.000 VNĐ </p>
+                            <span className="font-normal">/đêm</span>
                         </div>
                     </div>
                 );

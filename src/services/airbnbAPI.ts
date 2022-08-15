@@ -8,9 +8,9 @@ import axiosClients from "./axiosClients";
 
 const airbnbAPI = {
     getLocationList: (offset?: number, location?: string, limit?: number) => {
-        if (typeof limit === "undefined") {
-            limit = DefaultPerPage.PERPAGE;
-        }
+        // if (typeof limit === "undefined") {
+        //     limit = DefaultPerPage.PERPAGE;
+        // }
         let url = `/locations?limit=${limit}`;
 
         if (typeof offset !== "undefined") {
