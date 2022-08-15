@@ -12,11 +12,14 @@ import "swiper/css/navigation";
 import { Pagination } from "swiper";
 import Map from "component/Map/Map";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { removeVietnameseTones } from "convert/ConvertVie";
 
 const Room = () => {
     const useParam = useParams();
     const { data, isLoading, error } = useSelector((state: RootState) => state.room);
+    const navigation = useNavigate();
+
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         const split: any = useParam.locationId?.split("&");
@@ -30,6 +33,9 @@ const Room = () => {
     if (error) {
         return <h1>Error...</h1>;
     }
+    const gotoRoomsByLocationId = (name: string, _id: string) => {
+        navigation(`../rooms/${name}/${_id}`);
+    };
     return (
         <div className="overflow-hidden">
             <div className="flex">
@@ -49,7 +55,11 @@ const Room = () => {
                     <div className=" grid grid-cols-2 gap-8">
                         {data?.map((room, index) => {
                             return (
-                                <div key={index} className="text-base">
+                                <div
+                                    key={index}
+                                    className="text-base cursor-pointer"
+                                    onClick={() => gotoRoomsByLocationId(removeVietnameseTones(room.name), room._id)}
+                                >
                                     <div className="pb-2">
                                         <Swiper
                                             pagination={{
