@@ -22,9 +22,9 @@ const Header = () => {
     console.log("openSelected", openSelected);
 
     return (
-        <>
+        <div className="nb:hidden md:inline">
             {openSelected ? (
-                <header className=" p-6 pb-24 dark:text-gray-100 border-solid border-2 z-10 md:px-10">
+                <header className=" p-6 pb-24 dark:text-gray-100 border-solid border-2 z-10 md:px-10 ">
                     <div className="container flex justify-between h-16 mx-auto">
                         <a className="flex items-center p-2 w-32 h-8 text-red-400 mt-4 text-2xl font-bold   ">
                             <i className="text-[40px]">
@@ -123,7 +123,7 @@ const Header = () => {
                     </div>
                 </header>
             )}
-        </>
+        </div>
     );
 };
 

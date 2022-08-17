@@ -38,9 +38,9 @@ const Room = () => {
     };
     return (
         <div className="overflow-hidden">
-            <div className="flex">
-                <div className="w-2/5 px-6">
-                    <div className="flex justify-between">
+            <div className="flex nb:flex-col-reverse lg:flex-row">
+                <div className="px-6 md:w-full lg:w-2/5 xl:w-2/5 2xl:w-2/5">
+                    <div className="flex justify-between pb-5">
                         <div>
                             <span>Hơn 300 chỗ ở Ngày 14-15 tháng 6</span>
                             <h1>Chỗ ở tại khu vực mà bạn đã chọn</h1>
@@ -52,7 +52,7 @@ const Room = () => {
                             </button>
                         </div>
                     </div>
-                    <div className=" grid grid-cols-2 gap-8">
+                    <div className=" grid gap-8 nb:grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 2xl:grid-cols-2 overflow-y-auto overflow-hidden h-screen ">
                         {data?.map((room, index) => {
                             return (
                                 <div
@@ -60,7 +60,7 @@ const Room = () => {
                                     className="text-base cursor-pointer"
                                     onClick={() => gotoRoomsByLocationId(removeVietnameseTones(room.name), room._id)}
                                 >
-                                    <div className="pb-2">
+                                    <div className="">
                                         <Swiper
                                             pagination={{
                                                 dynamicBullets: true,
@@ -72,7 +72,7 @@ const Room = () => {
                                                 <img
                                                     src={room?.image}
                                                     alt={room?.name}
-                                                    className=" w-full h-72 object-cover rounded-2xl"
+                                                    className=" w-full object-cover rounded-2xl"
                                                 />
                                             </SwiperSlide>
                                         </Swiper>
@@ -93,7 +93,7 @@ const Room = () => {
                                     <div>
                                         <p className="text-gray-500">Ngày 07 - Ngày 12 tháng 10</p>
                                     </div>
-                                    <div className="flex">
+                                    <div className="flex pb-5">
                                         <p className="font-medium">{`${room?.price.toLocaleString("vi-VN")} VND/`}</p>
                                         <span className="font-normal">đêm</span>
                                     </div>
@@ -102,7 +102,7 @@ const Room = () => {
                         })}
                     </div>
                 </div>
-                <div className="hidden xl:inline-flex flex-1">
+                <div className="hidden lg:inline-flex lg:flex-1">
                     <Map searchResults={data} />
                 </div>
             </div>

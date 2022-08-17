@@ -88,46 +88,50 @@ const Footer = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="flex justify-between py-8 px-10">
-                    <div className="nb:border-solid border-b-[1px] lg:border-none">
-                        <ul className="flex">
-                            <li className="hover:underline">
+                <div className=" flex py-8 px-10 nb:border-solid border-b-[1px] lg:flex-row lg:justify-between md:flex-col-reverse mb:flex-col-reverse">
+                    <div>
+                        <div className="md:flex lg:justify-center md:justify-center sm:justify-center">
+                            <div className="pr-5 md:text-sm">
                                 <a href="">© 2022 Airbnb, Inc.</a>
-                            </li>
-                            <li className="hover:underline px-5">
-                                <a href="">Quyền riêng tư</a>
-                            </li>
-                            <li className="hover:underline pr-5">
-                                <a href="">Điều khoản</a>
-                            </li>
-                            <li className="hover:underline">
-                                <a href="">Sơ đồ trang web</a>
-                            </li>
-                        </ul>
+                            </div>
+                            <div className="nb:hidden mb:inline-flex mb:text-sm">
+                                <div className="hover:underline">
+                                    <a href="">Quyền riêng tư</a>
+                                </div>
+                                <div className="hover:underline mb:px-5 ">
+                                    <a href="">Điều khoản</a>
+                                </div>
+                                <div className="hover:underline ">
+                                    <a href="">Sơ đồ trang web</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className=" flex items-center ">
-                        <div className="flex ">
-                            <a href="#" className="flex items-center hover:underline">
-                                <TbWorld className="text-lg" />
-                                <span>Tiếng Việt(VN)</span>
-                            </a>
-                            <p className="flex items-center pl-5 hover:underline cursor-pointer">
-                                <BiDollar />
-                                USD
-                            </p>
-                        </div>
+                    <div>
+                        <div className=" flex items-center lg:justify-end md:justify-center sm:justify-start">
+                            <div className="flex ">
+                                <a href="#" className="flex items-center hover:underline">
+                                    <TbWorld className="text-lg" />
+                                    <span>Tiếng Việt(VN)</span>
+                                </a>
+                                <p className="flex items-center pl-5 hover:underline cursor-pointer">
+                                    <BiDollar />
+                                    USD
+                                </p>
+                            </div>
 
-                        <div className="flex pl-20">
-                            <i className="cursor-pointer">
-                                <FaFacebookF />
-                            </i>
-                            <i className="px-10 hover:underline">
-                                <FaTwitter />
-                            </i>
-                            <i className="cursor-pointer">
-                                <FaInstagram />
-                            </i>
+                            <div className="flex lg:pl-20 nb:hidden md:inline-flex md:pl-5">
+                                <i className="cursor-pointer">
+                                    <FaFacebookF />
+                                </i>
+                                <i className="px-10 hover:underline">
+                                    <FaTwitter />
+                                </i>
+                                <i className="cursor-pointer">
+                                    <FaInstagram />
+                                </i>
+                            </div>
                         </div>
                     </div>
                 </div>
