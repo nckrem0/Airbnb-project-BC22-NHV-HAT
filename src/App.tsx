@@ -6,6 +6,7 @@ import Login from "pages/Login";
 import { Routes, Route } from "react-router-dom";
 import MainTemplate from "template/MainTemplate";
 import Signup from "pages/Signup";
+import Location from "pages/Demo/Location";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="host/:homes" element={<Host />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="demo" element={<Location />} />
 
           <Route index element={<Home />} />
         </Route>
