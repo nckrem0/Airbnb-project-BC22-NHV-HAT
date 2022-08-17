@@ -10,8 +10,8 @@ const MainTemplate = () => {
             {/* Body  */}
             <div className="flex-1">
                 <Outlet />
-                <Footer />
             </div>
+            <Footer />
         </div>
     );
 };

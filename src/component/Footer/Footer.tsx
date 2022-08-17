@@ -6,91 +6,90 @@ const Footer = () => {
     return (
         <div className="bg-gray-100">
             <div className="2xl:max-w-7xl 2xl:mx-auto ">
-                <div className="flex justify-between py-8 text-sm leading-10">
-                    <div>
+                <div className="pt-14 px-10 text-sm leading-10 lg:flex lg:border-solid border-b-[1px] nb:border-none">
+                    <div className="nb:border-solid border-b-[1px] lg:border-none lg:basis-1/2">
                         <h3 className="font-semibold text-base">Hỗ Trợ</h3>
-                        <ul>
-                            <li className="hover:underline">
+                        <ul className="md:flex flex-wrap justify-between leading-7 lg:flex-col pb-5">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Trung tâm trợ giúp </a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">AirCover</a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#"> Thông tin an toàn </a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Hỗ trợ người khuyết tật</a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Các tùy chọn hủy</a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Biện pháp ứng phó với đại dịch COVID-19 của chúng tôi</a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Báo cáo lo ngại của hàng xóm</a>
                             </li>
                         </ul>
                     </div>
-                    <div>
+                    <div className=" nb:mt-5 nb:border-solid border-b-[1px] lg:border-none lg:basis-1/2 lg:mt-0">
                         <h3 className="font-semibold text-base">Cộng Đồng</h3>
-                        <ul>
-                            <li className="hover:underline">
+                        <ul className="md:flex flex-wrap justify-start leading-7 lg:flex-col pb-5">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Airbnb.org: nhà ở cứu trợ</a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Hỗ trợ dân tị nạn Afghanistan</a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Chống phân biệt đối xử</a>
                             </li>
                         </ul>
                     </div>
-                    <div>
+                    <div className=" nb:mt-5 nb:border-solid border-b-[1px] lg:border-none lg:basis-1/2 lg:mt-0">
                         <h3 className="font-semibold text-base">Đón tiếp khách</h3>
-                        <ul>
-                            <li className="hover:underline">
+                        <ul className="md:flex flex-wrap justify-start leading-7 lg:flex-col pb-5">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Thử đón tiếp khách</a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">AirCover cho Chủ nhà</a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Xem tài nguyên đón tiếp khách</a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Truy cập diễn đàn cộng đồng</a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Đón tiếp khách có trách nhiệm</a>
                             </li>
                         </ul>
                     </div>
-                    <div>
+                    <div className=" nb:mt-5 nb:border-solid border-b-[1px] lg:border-none lg:basis-1/2 lg:mt-0">
                         <h3 className="font-semibold text-base">Airbnb</h3>
-                        <ul>
-                            <li className="hover:underline">
+                        <ul className="md:flex flex-wrap justify-start leading-7 lg:flex-col pb-5">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Trang tin tức</a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Tìm hiểu các tính năng mới</a>
                             </li>
                             <li>
                                 <a href="#">Thư ngỏ từ các nhà sáng lập</a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Cơ hội nghề nghiệp</a>
                             </li>
-                            <li className="hover:underline">
+                            <li className="hover:underline md:basis-1/3 lg:basis-0">
                                 <a href="#">Nhà đầu tư</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <hr />
-                <div className="flex justify-between py-8">
-                    <div>
+                <div className="flex justify-between py-8 px-10">
+                    <div className="nb:border-solid border-b-[1px] lg:border-none">
                         <ul className="flex">
                             <li className="hover:underline">
                                 <a href="">© 2022 Airbnb, Inc.</a>
@@ -107,7 +106,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="flex items-center">
+                    <div className=" flex items-center ">
                         <div className="flex ">
                             <a href="#" className="flex items-center hover:underline">
                                 <TbWorld className="text-lg" />
