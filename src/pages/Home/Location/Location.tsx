@@ -29,7 +29,7 @@ const Location = () => {
         navigation(`../rooms/${name}&${_id}`);
     };
     return (
-        <div className=" grid grid-cols-4 gap-8 2xl:max-w-7xl 2xl:mx-auto py-10">
+        <div className=" grid gap-8 py-10 nb:grid-cols-1 nb:px-5 nb:mx-auto mb:grid-cols-1  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:max-w-8xl 2xl:mx-auto 2xl:grid-cols-5">
             {data?.map((location, index) => {
                 return (
                     <div
