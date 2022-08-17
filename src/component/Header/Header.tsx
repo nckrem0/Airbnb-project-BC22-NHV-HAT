@@ -19,6 +19,7 @@ const Header = () => {
   const handleSelected = () => {
     setSelected(!openSelected);
   };
+  console.log("openSelected", openSelected);
 
   return (
     <>
@@ -67,7 +68,10 @@ const Header = () => {
               </div>
 
               <div className="lg:flex bg-gray-200 h-16 mt-5 items-center text-black border-solid border-[1px] border-gray-200 rounded-[40px]">
-                <ChooseDate openSelected={openSelected} />
+                <ChooseDate
+                  openSelected={openSelected}
+                  setSelected={setSelected}
+                />
               </div>
             </section>
 
