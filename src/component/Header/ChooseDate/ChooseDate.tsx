@@ -17,10 +17,14 @@ import { AppDispatch } from "store";
 
 type Props = {
   openSelected: boolean;
+  setSelected(value: boolean): void;
 };
 
 const ChooseDate = (props: Props) => {
-  const { openSelected } = props;
+  const [openDate, setOpenDate] = useState(false);
+  const [addMoreGuests, setMoreGuests] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+
   const dispatch = useDispatch<AppDispatch>();
 
   const [startDate, setStartDate] = useState(new Date());
@@ -29,6 +33,10 @@ const ChooseDate = (props: Props) => {
   const handleSelect = (ranges: any) => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
+  };
+  const handleOpen = () => {
+    setOpenDate(!openDate);
+    setMoreGuests(false);
   };
 
   const selectionRange = {
@@ -45,6 +53,8 @@ const ChooseDate = (props: Props) => {
     }, 300);
   };
 
+  console.log(searchInput);
+
   return (
     <>
       <label className="h-16 py-2 px-8  hover:bg-gray-300 rounded-[32px] cursor-pointer   mr-4 ">
@@ -54,35 +64,71 @@ const ChooseDate = (props: Props) => {
             className="bg-gray-200 hover:bg-gray-300  text-sm "
             type="text"
             placeholder="Tìm kiếm điểm đến"
-            onChange={onSearchLocation}
+            // onChange={onSearchLocation}
+            onChange={(e) => setSearchInput(e.target.value)}
           />
         </div>
       </label>
-      <div className="mr-4 h-16 py-2 px-8 hover:bg-gray-300 transition-all duration-300 rounded-[32px] ">
-        <div className="pb-1 text-black">{`Nhận Phòng ${new Date(
-          startDate
-        ).getDate()}`}</div>
-        <div className="text-gray-400 text-sm">Thêm Ngày</div>
-        {openSelected && (
-          <div className="  shadow-lg bg-white search rounded-[32px]">
-            <DateRangePicker
-              ranges={[selectionRange]}
-              minDate={new Date()}
-              rangeColors={["#FD5b61"]}
-              onChange={handleSelect}
-            />
-          </div>
-        )}
-      </div>
 
-      <div className="mr-4 h-16 py-2 px-8 hover:bg-gray-300 transition-all duration-300 rounded-[32px]">
-        <div className="pb-1 ">{`Trả Phòng ${new Date(
-          endDate
-        ).getDate()}`}</div>
-        <div className="text-gray-400 text-sm ">Thêm Ngày Ngày</div>
-      </div>
+      {openDate ? (
+        <>
+          <div className="mr-4 h-16 py-2 px-8 hover:bg-gray-300 transition-all duration-300 rounded-[32px] ">
+            <div className="pb-1 text-black" onClick={handleOpen}>
+              Nhận Phòng
+            </div>
+
+            <div className="text-gray-400 text-sm">{`${new Date(
+              startDate
+            ).getDate()}`}</div>
+            <div className="  shadow-lg bg-white search rounded-[32px]">
+              <DateRangePicker
+                ranges={[selectionRange]}
+                minDate={new Date()}
+                rangeColors={["#FD5b61"]}
+                onChange={handleSelect}
+              />
+            </div>
+          </div>
+
+          <div
+            className="mr-4 h-16 py-2 px-8 hover:bg-gray-300 transition-all duration-300 rounded-[32px]"
+            onClick={handleOpen}
+          >
+            <div className="pb-1 ">Trả Phòng</div>
+            <div className="text-gray-400 text-sm ">{`${new Date(
+              endDate
+            ).getDate()}`}</div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div
+            className="mr-4 h-16 py-2 px-8 hover:bg-gray-300 transition-all duration-300 rounded-[32px] "
+            onClick={handleOpen}
+          >
+            <div className="pb-1 text-black">Nhận Phòng</div>
+
+            <div className="text-gray-400 text-sm">Thêm Ngày</div>
+          </div>
+
+          <div
+            className="mr-4 h-16 py-2 px-8 hover:bg-gray-300 transition-all duration-300 rounded-[32px]"
+            onClick={handleOpen}
+          >
+            <div className="pb-1 ">Trả Phòng</div>
+            <div className="text-gray-400 text-sm ">Thêm Ngày</div>
+          </div>
+        </>
+      )}
+
       <div className="flex hover:bg-gray-300 rounded-[32px] transition-all duration-300 ">
-        <AddMoreGuests />
+        <AddMoreGuests
+          openDate={openDate}
+          setOpenDate={setOpenDate}
+          addMoreGuests={addMoreGuests}
+          setMoreGuests={setMoreGuests}
+        />
+
         <div className=" mt-[7px] mr-[10px] h-12 items-center flex bg-red-400 p-3 text-white  rounded-[32px] cursor-pointer ">
           <FaSearch className="ml-2" />
           <span>Tìm Kiếm</span>
