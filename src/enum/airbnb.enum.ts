@@ -7,6 +7,7 @@ export enum EnumThunkAction {
     REGISTER_URL = "/auth/register",
     GET_LOCATION_LIST_DEMO = "/locations",
     GET_ACCOUNT = "/account",
+    ROOMSLIST = "room/getListRoomRental",
 }
 
 export enum Action {
@@ -17,6 +18,7 @@ export enum Action {
     LOGIN_URL = "LOGIN_URL",
     REGISTER = "RegisterAPI",
     ACCOUNT = "account",
+    ROOMSLIST = "getListRoomRental",
 }
 export enum ACTION_NAME {
     REGISTER = "register",
@@ -24,5 +26,5 @@ export enum ACTION_NAME {
 }
 
 export enum DefaultPerPage {
-    PERPAGE = 8,
+    PERPAGE = 10,
 }

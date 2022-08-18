@@ -7,7 +7,11 @@ import { GoLocation } from "react-icons/go";
 import { getLocationListDemo } from "slices/locationDemo";
 import { AppDispatch, RootState } from "store";
 
-const Location = () => {
+type Props = {
+  setPickUpId(value: string): void;
+};
+
+const Location = (props: Props) => {
   const [getIdLocation, setGetIdLocation] = useState("");
   const [locations, setLocations] = useState("");
 
@@ -27,7 +31,7 @@ const Location = () => {
     setLocations(searchTerm);
 
     setGetIdLocation(idLocation);
-    console.log(idLocation);
+    props.setPickUpId(idLocation);
   };
 
   if (isLoading) {
@@ -48,7 +52,8 @@ const Location = () => {
           className="bg-gray-200 hover:bg-gray-300  text-sm"
         />
       </div>
-      <div className="bg-white shadow-2xl flex flex-col border-solid border-spacing-[1px] py-4 px-8 mt-3 rounded-xl w-[300px] ">
+
+      <div className="bg-white shadow-2xl flex flex-col  px-8 mt-3 rounded-xl w-[300px] ">
         {data
           ?.filter((location) => {
             const searchTerm = String(locations).toLowerCase();
@@ -63,7 +68,7 @@ const Location = () => {
             return (
               <div
                 key={location._id}
-                className=" font-montserrat font-medium  text-start cursor-pointer my-[2px]  mt-3 border-b  border-gray-200  "
+                className=" font-montserrat font-medium  text-start cursor-pointer my-[2px]  mt-3   "
                 onClick={() => onSearch(location.province, location._id)}
               >
                 <div className=" flex items-center mb-3  ">

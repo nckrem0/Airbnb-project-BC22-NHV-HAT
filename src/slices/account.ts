@@ -15,13 +15,14 @@ const initialState: AccountState = {
     error: "",
 };
 
-export const getAccountlList = createAsyncThunk(EnumThunkAction.GET_ACCOUNT, async (query: any) => {
+export const getAccountInfo = createAsyncThunk(EnumThunkAction.GET_ACCOUNT, async () => {
     try {
-        const { userId } = query;
-        console.log(userId);
+        let user: any = localStorage.getItem("user");
+        user = JSON.parse(user);
 
-        const data = await airbnbAPI.getAccountlList(userId);
-        console.log(data);
+        const { _id } = user.user;
+
+        const data = await airbnbAPI.getAccountInfo(_id);
 
         return data;
     } catch (error) {
@@ -34,13 +35,13 @@ const accountSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (buider) => {
-        buider.addCase(getAccountlList.pending, (state) => {
+        buider.addCase(getAccountInfo.pending, (state) => {
             return { ...state, isLoading: true };
         });
-        buider.addCase(getAccountlList.fulfilled, (state, { payload }) => {
+        buider.addCase(getAccountInfo.fulfilled, (state, { payload }) => {
             return { ...state, isLoading: false, data: payload };
         });
-        buider.addCase(getAccountlList.rejected, (state, { error }) => {
+        buider.addCase(getAccountInfo.rejected, (state, { error }) => {
             return { ...state, isLoading: false, error: error.message as string };
         });
     },

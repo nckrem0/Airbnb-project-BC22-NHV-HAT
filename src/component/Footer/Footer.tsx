@@ -5,7 +5,7 @@ import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 const Footer = () => {
     return (
         <div className="bg-gray-100 nb:pb-20 md:pb-0">
-            <div className="2xl:max-w-7xl 2xl:mx-auto ">
+            <div className="2xl:max-w-8xl 2xl:mx-auto ">
                 <div className="pt-14 px-10 text-sm leading-10 lg:flex lg:border-solid border-b-[1px] nb:border-none">
                     <div className="nb:border-solid border-b-[1px] lg:border-none lg:basis-1/2">
                         <h3 className="font-semibold text-base">Hỗ Trợ</h3>

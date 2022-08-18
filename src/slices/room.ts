@@ -6,62 +6,65 @@ import { IRoom } from "interfaces/rooms";
 import { dataMaps } from "data/maps";
 
 interface RoomState {
-    data: IRoom[];
-    isLoading: boolean;
-    error: string;
+  data: IRoom[];
+  isLoading: boolean;
+  error: string;
 }
 
 const initialState: RoomState = {
-    data: [],
-    isLoading: true,
-    error: "",
+  data: [],
+  isLoading: true,
+  error: "",
 };
 
-export const getRoomsList = createAsyncThunk(EnumThunkAction.GET_ROOM_LIST, async (query: any) => {
+export const getRoomsList = createAsyncThunk(
+  EnumThunkAction.GET_ROOM_LIST,
+  async (query: any) => {
     try {
-        const { locationName, locationId, limit, offset } = query;
-        const data = await airbnbAPI.getRoomsList(locationId, limit, offset);
+      const { locationName, locationId, limit, offset } = query;
+      const data = await airbnbAPI.getRoomsList(locationId, limit, offset);
 
-        // add latitude and longtitude
-        try {
-            for (const [key, value] of Object.entries(dataMaps)) {
-                switch (key.toLowerCase()) {
-                    case locationName.toLowerCase():
-                        data.map((item, index) => {
-                            if (index > value.length - 1) {
-                                item.latitude = value[0].latitude;
-                                item.longitude = value[0].longitude;
-                            } else {
-                                item.latitude = value[index].latitude;
-                                item.longitude = value[index].longitude;
-                            }
-
-                            return item;
-                        });
-                        break;
+      // add latitude and longtitude
+      try {
+        for (const [key, value] of Object.entries(dataMaps)) {
+          switch (key.toLowerCase()) {
+            case locationName.toLowerCase():
+              data.map((item, index) => {
+                if (index > value.length - 1) {
+                  item.latitude = value[0].latitude;
+                  item.longitude = value[0].longitude;
+                } else {
+                  item.latitude = value[index].latitude;
+                  item.longitude = value[index].longitude;
                 }
-            }
-        } catch (error) {}
-        return data;
+
+                return item;
+              });
+              break;
+          }
+        }
+      } catch (error) {}
+      return data;
     } catch (error) {
-        throw error;
+      throw error;
     }
-});
+  }
+);
 
 const locationSlice = createSlice({
-    name: Action.ROOMS,
-    initialState,
-    reducers: {},
-    extraReducers: (buider) => {
-        buider.addCase(getRoomsList.pending, (state) => {
-            return { ...state, isLoading: true };
-        });
-        buider.addCase(getRoomsList.fulfilled, (state, { payload }) => {
-            return { ...state, isLoading: false, data: payload };
-        });
-        buider.addCase(getRoomsList.rejected, (state, { error }) => {
-            return { ...state, isLoading: false, error: error.message as string };
-        });
-    },
+  name: Action.ROOMS,
+  initialState,
+  reducers: {},
+  extraReducers: (buider) => {
+    buider.addCase(getRoomsList.pending, (state) => {
+      return { ...state, isLoading: true };
+    });
+    buider.addCase(getRoomsList.fulfilled, (state, { payload }) => {
+      return { ...state, isLoading: false, data: payload };
+    });
+    buider.addCase(getRoomsList.rejected, (state, { error }) => {
+      return { ...state, isLoading: false, error: error.message as string };
+    });
+  },
 });
 export default locationSlice.reducer;

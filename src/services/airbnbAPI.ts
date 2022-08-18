@@ -9,9 +9,9 @@ import { IAccount } from "interfaces/account";
 
 const airbnbAPI = {
     getLocationList: (offset?: number, location?: string, limit?: number) => {
-        // if (typeof limit === "undefined") {
-        //     limit = DefaultPerPage.PERPAGE;
-        // }
+        if (typeof limit === "undefined") {
+            limit = DefaultPerPage.PERPAGE;
+        }
         let url = `/locations?limit=${limit}`;
 
         if (typeof offset !== "undefined") {
@@ -32,7 +32,7 @@ const airbnbAPI = {
             url += `&offset=${offset}`;
         }
         if (typeof locationId !== "undefined") {
-            url += `&locationId=${locationId}`;
+            url += `/rooms?locationId=${locationId}`;
         }
         return axiosClients.get<unknown, IRoom[]>(url);
     },
@@ -42,8 +42,11 @@ const airbnbAPI = {
     getReviewlList: (roomId: string) => {
         return axiosClients.get<unknown, IReview[]>(`reviews/byRoom?roomId=${roomId}`);
     },
-    getAccountlList: (userId: string) => {
+    getAccountInfo: (userId: string) => {
         return axiosClients.get<unknown, IAccount>(`/users/${userId}`);
+    },
+    getListRoomRental: (locationId: string) => {
+        return axiosClients.get<unknown, IRoom[]>(`/rooms?locationId=${locationId}`);
     },
 };
 

@@ -5,22 +5,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "store";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { getAccountlList } from "slices/account";
+import { getAccountInfo } from "slices/account";
 
 const Account = () => {
     const account = useSelector((state: RootState) => state.account).data;
-    const urlParams = useParams();
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
-        dispatch(getAccountlList({}));
-    }, []);
+        dispatch(getAccountInfo());
+    }, [dispatch]);
 
     return (
         <div>
             <div className="2xl:max-w-7xl mx-auto py-20 flex">
                 <div className="border-solid border-[1px] w-1/4 pt-10 rounded-xl">
                     <div className="flex flex-col  items-center">
-                        <img src={account.avatar} alt={account.name} className="rounded-full" />
+                        <img
+                            src="https://a0.muscache.com/defaults/user_pic-225x225.png?v=3"
+                            alt={account.name}
+                            className="rounded-full w-36 h-36"
+                        />
                         <span className="underline pt-2 font-medium">Cập nhật ảnh</span>
                     </div>
                     <div className="px-5 pt-10 leading-10">
@@ -45,7 +48,7 @@ const Account = () => {
                 </div>
                 <div className="px-20 w-3/5">
                     <div className="leading-8">
-                        <h1 className="text-3xl font-semibold">Xin Chào, tôi là (Name)</h1>
+                        <h1 className="text-3xl font-semibold">Xin Chào, tôi là {account.name}</h1>
                         <span>Bắt đầu tham gia vào 2022</span>
                         <p className="underline font-medium cursor-pointer">Chỉnh sửa hồ sơ</p>
                     </div>

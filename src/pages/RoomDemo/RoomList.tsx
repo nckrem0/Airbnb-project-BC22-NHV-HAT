@@ -10,25 +10,25 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination } from "swiper";
-import Map from "component/Map/Map";
 
 import { useNavigate, useParams } from "react-router-dom";
 import { removeVietnameseTones } from "convert/ConvertVie";
+import { getListRoomRental } from "slices/listRoomDemo";
 
-const Room = () => {
-  const useParam = useParams();
+const RoomList = () => {
+  const urlParams = useParams();
   const { data, isLoading, error } = useSelector(
-    (state: RootState) => state.room
+    (state: RootState) => state.listRoomDemo
   );
   const navigation = useNavigate();
 
   const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
-    const split: any = useParam.locationId?.split("&");
-    const locationName = split[0];
-    const locationId = split[1];
-    dispatch(getRoomsList({ locationName, locationId }));
-  }, [dispatch, useParam.locationId]);
+    const locationId = String(urlParams.id);
+    dispatch(getListRoomRental(locationId));
+  }, [dispatch, urlParams.id]);
+
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
@@ -38,6 +38,7 @@ const Room = () => {
   const gotoRoomsByLocationId = (name: string, _id: string) => {
     navigation(`../rooms/${name}/${_id}`);
   };
+  console.log(data);
 
   return (
     <div className="overflow-hidden">
@@ -112,12 +113,10 @@ const Room = () => {
             })}
           </div>
         </div>
-        <div className="hidden lg:inline-flex lg:flex-1">
-          {/* <Map searchResults={data} /> */}
-        </div>
+        <div className="hidden lg:inline-flex lg:flex-1"></div>
       </div>
     </div>
   );
 };
 
-export default Room;
+export default RoomList;
