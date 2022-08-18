@@ -5,16 +5,18 @@ import room from "slices/room";
 import review from "slices/review";
 import roomdetail from "slices/room-details";
 import signup from "slices/signup";
+import account from "slices/account";
 
 const store = configureStore({
-  reducer: {
-    location,
-    room,
-    roomdetail,
-    review,
-    auth,
-    signup,
-  },
+    reducer: {
+        location,
+        room,
+        roomdetail,
+        review,
+        auth,
+        signup,
+        account,
+    },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
