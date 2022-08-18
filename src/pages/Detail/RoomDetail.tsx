@@ -19,16 +19,11 @@ const RoomDetail = (props: Props) => {
     // const [review, setReview] = useState<IReview>(data);
 
     const urlParams = useParams();
-    console.log(urlParams);
 
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(getRoomDetailList(urlParams));
     }, [dispatch, urlParams]);
-    useEffect(() => {});
-    // useEffect(() => {
-    //     setReview(data);
-    // }, [setReview, data]);
     if (isLoading) {
         return <h1>Loading...</h1>;
     }
