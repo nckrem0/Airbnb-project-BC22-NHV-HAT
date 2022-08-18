@@ -19,7 +19,6 @@ const Header = () => {
   const handleSelected = () => {
     setSelected(!openSelected);
   };
-  console.log("openSelected", openSelected);
 
   return (
     <div className="font-montserrat nb:hidden md:inline z-50">

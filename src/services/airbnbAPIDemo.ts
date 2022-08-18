@@ -8,10 +8,5 @@ const airbnbAPIDemo = {
       EnumThunkAction.GET_LOCATION_LIST_DEMO
     );
   },
-  getListRoomRental: (locationId: string) => {
-    return axiosClients.get<unknown, IRoomDetails[]>(
-      `/rooms?locationId=${locationId}`
-    );
-  },
 };
 export default airbnbAPIDemo;

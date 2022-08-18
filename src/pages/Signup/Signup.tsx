@@ -63,7 +63,7 @@ const Signup = (props: Props) => {
 
         <TextInput
           type="text"
-          label="birthday"
+          label="Birthday"
           placeholder="1998/05/11"
           className="text-white"
           name="birthday"
@@ -72,14 +72,12 @@ const Signup = (props: Props) => {
 
         <TextInput
           type="text"
-          label="address"
+          label="Address"
           placeholder="191A Chường Trinh Quận 12"
           className="text-white"
           name="address"
           onChange={onChageText}
         />
-
-        {/* Error từ API trả ra */}
 
         <Button
           type="submit"
