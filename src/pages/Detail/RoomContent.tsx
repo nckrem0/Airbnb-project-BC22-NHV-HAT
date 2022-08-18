@@ -21,7 +21,7 @@ type Props = {
 const RoomContent = (props: Props) => {
     const { dataRoom } = props;
     return (
-        <div className="flex pt-12 pb-10 relative nb:px-5 md:px-0">
+        <div className="flex pt-12 pb-10 relative nb:px-10 md:px-0">
             <div className="nb:w-full md:w-2/3">
                 <div className=" md:px-0">
                     <div className="flex justify-between w-full pb-5 nb:border-solid border-b-[1px] ">

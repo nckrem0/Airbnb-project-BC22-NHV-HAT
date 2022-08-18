@@ -19,7 +19,7 @@ const RoomReview = (props: Props) => {
     }, [dispatch, props.roomId]);
     return (
         <div>
-            <div className="flex flex-wrap pt-5 nb:flex-col md:flex-row">
+            <div className="flex flex-wrap pt-5 nb:flex-col md:flex-row ">
                 {data.map((review, index) => {
                     return (
                         <div className=" md:w-1/2 pb-5 nb:w-full" key={index}>
