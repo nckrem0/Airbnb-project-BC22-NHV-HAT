@@ -4,45 +4,46 @@ import { Action, EnumThunkAction } from "enum/airbnb.enum";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 interface AccountState {
-  data: IAccount;
-  isLoading: boolean;
-  error: string;
+    data: IAccount;
+    isLoading: boolean;
+    error: string;
 }
 
 const initialState: AccountState = {
-  data: <IAccount>{},
-  isLoading: true,
-  error: "",
+    data: <IAccount>{},
+    isLoading: true,
+    error: "",
 };
 
-export const getAccountlList = createAsyncThunk(
-  EnumThunkAction.GET_ACCOUNT,
-  async (userId: string) => {
+export const getAccountInfo = createAsyncThunk(EnumThunkAction.GET_ACCOUNT, async () => {
     try {
-      const data = await airbnbAPI.getAccountlList(userId);
-      console.log(data);
+        let user: any = localStorage.getItem("user");
+        user = JSON.parse(user);
 
-      return data;
+        const { _id } = user.user;
+
+        const data = await airbnbAPI.getAccountInfo(_id);
+
+        return data;
     } catch (error) {
-      throw error;
+        throw error;
     }
-  }
-);
+});
 
 const accountSlice = createSlice({
-  name: Action.ACCOUNT,
-  initialState,
-  reducers: {},
-  extraReducers: (buider) => {
-    buider.addCase(getAccountlList.pending, (state) => {
-      return { ...state, isLoading: true };
-    });
-    buider.addCase(getAccountlList.fulfilled, (state, { payload }) => {
-      return { ...state, isLoading: false, data: payload };
-    });
-    buider.addCase(getAccountlList.rejected, (state, { error }) => {
-      return { ...state, isLoading: false, error: error.message as string };
-    });
-  },
+    name: Action.ACCOUNT,
+    initialState,
+    reducers: {},
+    extraReducers: (buider) => {
+        buider.addCase(getAccountInfo.pending, (state) => {
+            return { ...state, isLoading: true };
+        });
+        buider.addCase(getAccountInfo.fulfilled, (state, { payload }) => {
+            return { ...state, isLoading: false, data: payload };
+        });
+        buider.addCase(getAccountInfo.rejected, (state, { error }) => {
+            return { ...state, isLoading: false, error: error.message as string };
+        });
+    },
 });
 export default accountSlice.reducer;

@@ -70,7 +70,7 @@ const RoomDetail = (props: Props) => {
             <div className="nb:px-0">
                 <RoomImage dataRoom={data} />
             </div>
-            <div className="nb:px-5">
+            <div className="nb:px-10 ">
                 <div className="nb:inline nb:border-solid  ">
                     <div className="nb:mt-5 nb:border-solid border-b-[1px] md:hidden ">
                         <h1 className="font-bold text-2xl">{data.name}</h1>
@@ -94,7 +94,7 @@ const RoomDetail = (props: Props) => {
             <div>
                 <RoomContent dataRoom={data} />
             </div>
-            <div className="">
+            <div className="nb:px-10 md:px-0">
                 <div className="flex items-center">
                     <AiFillStar className="text-rose-500 text-xl" />
                     <span className="pl-2 font-semibold text-2xl">4,83(18 đánh giá)</span>
