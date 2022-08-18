@@ -36,6 +36,7 @@ const Location = () => {
   if (error) {
     return <h1>Error...</h1>;
   }
+  console.log("locations", locations);
 
   return (
     <div className="container mx-auto">
@@ -48,35 +49,39 @@ const Location = () => {
           className="bg-gray-200 hover:bg-gray-300  text-sm"
         />
       </div>
-      <div className="bg-white shadow-2xl flex flex-col border-solid border-spacing-[1px] py-4 px-8 mt-3 rounded-xl w-[300px] ">
-        {data
-          ?.filter((location) => {
-            const searchTerm = String(locations).toLowerCase();
-            const name = String(location.province).toLowerCase();
+      {locations !== "" ? (
+        <div className="bg-gray-500 shadow-2xl flex flex-col  py-4 px-8 mt-3 rounded-xl w-[300px] ">
+          {data
+            ?.filter((location) => {
+              const searchTerm = String(locations).toLowerCase();
+              const name = String(location.province).toLowerCase();
 
-            return (
-              searchTerm && name.startsWith(searchTerm) && name !== searchTerm
-            );
-          })
-          .slice(0, 5)
-          .map((location) => {
-            return (
-              <div
-                key={location._id}
-                className=" font-montserrat font-medium  text-start cursor-pointer my-[2px]  mt-3 border-b  border-gray-200  "
-                onClick={() => onSearch(location.province, location._id)}
-              >
-                <div className=" flex items-center mb-3  ">
-                  <div className=" flex items-center justify-center content-center w-10 h-10 rounded-lg bg-gray-200 mr-2 ">
-                    <GoLocation className="block w-5 h-5" />
+              return (
+                searchTerm && name.startsWith(searchTerm) && name !== searchTerm
+              );
+            })
+            .slice(0, 5)
+            .map((location) => {
+              return (
+                <div
+                  key={location._id}
+                  className=" font-montserrat font-medium  text-start cursor-pointer my-[2px]  mt-3   "
+                  onClick={() => onSearch(location.province, location._id)}
+                >
+                  <div className=" flex items-center mb-3  ">
+                    <div className=" flex items-center justify-center content-center w-10 h-10 rounded-lg bg-gray-200 mr-2 ">
+                      <GoLocation className="block w-5 h-5" />
+                    </div>
+
+                    <div>{location.province}</div>
                   </div>
-
-                  <div>{location.province}</div>
                 </div>
-              </div>
-            );
-          })}
-      </div>
+              );
+            })}
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

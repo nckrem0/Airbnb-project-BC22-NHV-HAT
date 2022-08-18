@@ -35,8 +35,17 @@ const AddMoreGuests = (props: Props) => {
             className=" mr-4 h-16 py-2 px-2 items-center  "
             onClick={handleMoreGuests}
           >
-            <div className="pb-1">khách</div>
-            <div className="text-gray-400 text-sm">Thêm khách</div>
+            <div className="pb-1 font-medium">khách</div>
+            <div className="">
+              {adultGuests + childGuests + babyGuests + petGuests !== 0 ? (
+                <div className="text-sm font-medium">
+                  {adultGuests + childGuests + babyGuests} Khách, {petGuests}{" "}
+                  Pet
+                </div>
+              ) : (
+                <div className="text-gray-400 text-sm"> Thêm Khách</div>
+              )}
+            </div>
           </section>
           <div className="absolute mt-[5rem] right-[22rem] box mr-4 py-3 px-8 shadow-lg bg-white rounded-[32px] ">
             <div className="flex justify-between my-3">
@@ -99,7 +108,7 @@ const AddMoreGuests = (props: Props) => {
               <div className="flex items-center ml-[145px] text-gray-300">
                 <button
                   className="text-[30px] mx-3"
-                  onClick={() => setBabyGuests(babyGuests + 1)}
+                  onClick={() => setBabyGuests(babyGuests - 1)}
                 >
                   <span className="hover:text-red-400">
                     <AiOutlineMinusCircle />
@@ -152,8 +161,19 @@ const AddMoreGuests = (props: Props) => {
           className="mr-4 h-16 py-2 px-2 items-center"
           onClick={handleMoreGuests}
         >
-          <div className="pb-1">khách</div>
-          <div className="text-gray-400 text-sm">Thêm khách</div>
+          <div className="pb-1 font-medium">khách</div>
+          <div className="">
+            <div className="">
+              {adultGuests + childGuests + babyGuests + petGuests !== 0 ? (
+                <div className="text-sm font-medium">
+                  {adultGuests + childGuests + babyGuests} Khách, {petGuests}{" "}
+                  Pet
+                </div>
+              ) : (
+                <div className="text-gray-400 text-sm"> Thêm Khách</div>
+              )}
+            </div>
+          </div>
         </section>
       )}
     </>

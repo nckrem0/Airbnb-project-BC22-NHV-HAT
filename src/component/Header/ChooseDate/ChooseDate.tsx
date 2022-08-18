@@ -56,7 +56,7 @@ const ChooseDate = (props: Props) => {
 
   return (
     <>
-      <label className="h-16 py-2 px-8  hover:bg-gray-300 rounded-[32px] cursor-pointer   mr-4 ">
+      <label className="h-16 py-2 px-8  hover:bg-gray-300 font-medium rounded-[32px] cursor-pointer   mr-4 ">
         <div>
           <div className="pb-1">Địa Điểm</div>
 
@@ -66,14 +66,18 @@ const ChooseDate = (props: Props) => {
 
       {openDate ? (
         <>
-          <div className="mr-4 h-16 py-2 px-8 hover:bg-gray-300 transition-all duration-300 rounded-[32px] ">
+          <div className="mr-4 h-16 py-2 px-8 font-medium hover:bg-gray-300 transition-all duration-300 rounded-[32px] ">
             <div className="pb-1 text-black" onClick={handleOpen}>
               Nhận Phòng
             </div>
 
-            <div className="text-gray-400 text-sm">{`${new Date(
-              startDate
-            ).getDate()}`}</div>
+            {startDate < endDate ? (
+              <div className=" text-sm font-medium ">{`${new Date(
+                startDate
+              ).getDate()} Tháng ${new Date(startDate).getMonth()}`}</div>
+            ) : (
+              <div className="text-gray-400 text-sm">Thêm Ngày</div>
+            )}
             <div className="  shadow-lg bg-white search rounded-[32px]">
               <DateRangePicker
                 ranges={[selectionRange]}
@@ -85,32 +89,48 @@ const ChooseDate = (props: Props) => {
           </div>
 
           <div
-            className="mr-4 h-16 py-2 px-8 hover:bg-gray-300 transition-all duration-300 rounded-[32px]"
+            className="mr-4 h-16 py-2 px-8 font-medium hover:bg-gray-300 transition-all duration-300 rounded-[32px]"
             onClick={handleOpen}
           >
             <div className="pb-1 ">Trả Phòng</div>
-            <div className="text-gray-400 text-sm ">{`${new Date(
-              endDate
-            ).getDate()}`}</div>
+
+            {startDate < endDate ? (
+              <div className=" text-sm font-medium ">{`${new Date(
+                endDate
+              ).getDate()} Tháng ${new Date(endDate).getMonth()}`}</div>
+            ) : (
+              <div className="text-gray-400 text-sm">Thêm Ngày</div>
+            )}
           </div>
         </>
       ) : (
         <>
           <div
-            className="mr-4 h-16 py-2 px-8 hover:bg-gray-300 transition-all duration-300 rounded-[32px] "
+            className="mr-4 h-16 py-2 px-8 font-medium hover:bg-gray-300 transition-all duration-300 rounded-[32px] "
             onClick={handleOpen}
           >
             <div className="pb-1 text-black">Nhận Phòng</div>
-
-            <div className="text-gray-400 text-sm">Thêm Ngày</div>
+            {startDate < endDate ? (
+              <div className=" text-sm font-medium ">{`${new Date(
+                startDate
+              ).getDate()} Tháng ${new Date(startDate).getMonth()}`}</div>
+            ) : (
+              <div className="text-gray-400 text-sm">Thêm Ngày</div>
+            )}
           </div>
 
           <div
-            className="mr-4 h-16 py-2 px-8 hover:bg-gray-300 transition-all duration-300 rounded-[32px]"
+            className="mr-4 h-16 py-2 px-8 font-medium hover:bg-gray-300 transition-all duration-300 rounded-[32px]"
             onClick={handleOpen}
           >
             <div className="pb-1 ">Trả Phòng</div>
-            <div className="text-gray-400 text-sm ">Thêm Ngày</div>
+            {startDate < endDate ? (
+              <div className=" text-sm font-medium ">{`${new Date(
+                endDate
+              ).getDate()} Tháng ${new Date(endDate).getMonth()}`}</div>
+            ) : (
+              <div className="text-gray-400 text-sm">Thêm Ngày</div>
+            )}
           </div>
         </>
       )}
