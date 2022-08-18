@@ -5,6 +5,7 @@ import { IRoom } from "interfaces/rooms";
 import { IReview } from "interfaces/review";
 
 import axiosClients from "./axiosClients";
+import { IAccount } from "interfaces/account";
 
 const airbnbAPI = {
     getLocationList: (offset?: number, location?: string, limit?: number) => {
@@ -40,6 +41,9 @@ const airbnbAPI = {
     },
     getReviewlList: (roomId: string) => {
         return axiosClients.get<unknown, IReview[]>(`reviews/byRoom?roomId=${roomId}`);
+    },
+    getAccountlList: (userId: string) => {
+        return axiosClients.get<unknown, IAccount>(`/users/${userId}`);
     },
 };
 
