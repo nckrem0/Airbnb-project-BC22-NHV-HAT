@@ -36,7 +36,7 @@ const RoomDetail = (props: Props) => {
         return <h1>Error...</h1>;
     }
     return (
-        <div className="2xl:max-w-6xl 2xl: mx-auto">
+        <div className="2xl:max-w-6xl 2xl: mx-auto xl:max-w-5xl lg:max-w-4xl md:max-w-3xl">
             <div className="nb:flex justify-between px-10 py-5 md:flex-col">
                 <div>
                     <h1 className="font-bold text-2xl nb:hidden ">{data.name}</h1>
@@ -72,19 +72,19 @@ const RoomDetail = (props: Props) => {
                 </div>
             </div>
 
-            <div>
+            <div className="nb:px-0">
                 <RoomImage dataRoom={data} />
             </div>
             <div className="nb:px-5">
                 <div className="nb:inline nb:border-solid  ">
                     <div className="nb:mt-5 nb:border-solid border-b-[1px] md:hidden ">
                         <h1 className="font-bold text-2xl">{data.name}</h1>
-                        <div className="flex font-medium pb-5">
-                            <div className="flex items-center">
+                        <div className="flex flex-wrap font-medium pb-5 ">
+                            <div className="flex items-center nb:pr-3 mb:pr-0">
                                 <AiFillStar className="text-rose-500 text-lg" />
                                 <span className="underline">4,83 (18 Votes)</span>
                             </div>
-                            <div className="flex items-center px-8 ">
+                            <div className="flex items-center mb:px-8 nb:pr-3">
                                 <GiRibbonMedal className="text-rose-500 text-lg" />
                                 <span>Chủ nhà siêu cấp</span>
                             </div>
@@ -99,12 +99,12 @@ const RoomDetail = (props: Props) => {
             <div>
                 <RoomContent dataRoom={data} />
             </div>
-            <div className="pt-10">
+            <div className="">
                 <div className="flex items-center">
-                    <AiFillStar className="text-rose-500" />
-                    <span className="pl-2 font-semibold">4,83(18 đánh giá)</span>
+                    <AiFillStar className="text-rose-500 text-xl" />
+                    <span className="pl-2 font-semibold text-2xl">4,83(18 đánh giá)</span>
                 </div>
-                <div className="flex flex-wrap">
+                <div className="flex flex-wrap nb:hidden sm:inline-flex py-5 w-full">
                     {pointsData.map((point, index) => {
                         const percent = ((point.point * 100) / 5).toString();
                         return (
@@ -132,7 +132,7 @@ const RoomDetail = (props: Props) => {
                 <div>
                     <RoomReview roomId={data._id} />
                 </div>
-                <button className="p-3 border-solid border-[1px] border-black rounded-xl font-semibold mt-5 mb-7">
+                <button className="p-3 border-solid border-[1px] border-black rounded-xl font-semibold mt-5 mb-7 nb:w-full md:w-fit">
                     Hiển thị tất cả đánh giá
                 </button>
             </div>
