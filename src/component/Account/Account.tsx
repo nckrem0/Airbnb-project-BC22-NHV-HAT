@@ -23,7 +23,11 @@ const Account = () => {
       <div className="2xl:max-w-7xl mx-auto py-20 flex">
         <div className="border-solid border-[1px] w-1/4 pt-10 rounded-xl">
           <div className="flex flex-col  items-center">
-            <img src="" alt="" className="rounded-full" />
+            <img
+              src="https://airbnb.cybersoft.edu.vn/public/images/avatar/1635062160948_anh-dai-dien-dep-de-thuong-cho-facebook-zalo-9.jpg"
+              alt=""
+              className="rounded-full"
+            />
             <span className="underline pt-2 font-medium">Cập nhật ảnh</span>
           </div>
           <div className="px-5 pt-10 leading-10">

@@ -13,9 +13,11 @@ import { IQueryLocation } from "interfaces/query";
 import { getLocationList } from "slices/location";
 import AddMoreGuests from "../AddMoreGuests";
 import Location from "pages/Demo/Location";
+// import RoomList from "pages/RoomDemo/RoomList";
 
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "store";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   openSelected: boolean;
@@ -26,10 +28,15 @@ const ChooseDate = (props: Props) => {
   const [openDate, setOpenDate] = useState(false);
   const [addMoreGuests, setMoreGuests] = useState(false);
 
+  // State get IdLocation
+  const [pickUpId, setPickUpId] = useState("");
+
   const dispatch = useDispatch<AppDispatch>();
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+
+  const navigation = useNavigate();
 
   const handleSelect = (ranges: any) => {
     setStartDate(ranges.selection.startDate);
@@ -45,13 +52,11 @@ const ChooseDate = (props: Props) => {
     endDate: endDate,
     key: "selection",
   };
-  const onSearchLocation = (event: any) => {
-    const search = {} as IQueryLocation;
-    search.location = event.target.value;
 
-    setTimeout(() => {
-      dispatch(getLocationList(search));
-    }, 300);
+  const gotoRoomsByLocationId = (locationId: string) => {
+    navigation(`/rooms/${locationId}`);
+    setMoreGuests(false);
+    setOpenDate(false);
   };
 
   return (
@@ -60,7 +65,7 @@ const ChooseDate = (props: Props) => {
         <div>
           <div className="pb-1">Địa Điểm</div>
 
-          <Location />
+          <Location setPickUpId={setPickUpId} />
         </div>
       </label>
 
@@ -143,10 +148,14 @@ const ChooseDate = (props: Props) => {
           setMoreGuests={setMoreGuests}
         />
 
-        <div className=" mt-[7px] mr-[10px] h-12 items-center flex bg-red-400 p-3 text-white  rounded-[32px] cursor-pointer ">
+        <button
+          className=" mt-[7px] mr-[10px] h-12 items-center flex bg-red-400 p-3 text-white  rounded-[32px] cursor-pointer "
+          onClick={() => gotoRoomsByLocationId(pickUpId)}
+        >
           <FaSearch className="ml-2" />
           <span>Tìm Kiếm</span>
-        </div>
+          {/* <RoomList /> */}
+        </button>
       </div>
     </>
   );
