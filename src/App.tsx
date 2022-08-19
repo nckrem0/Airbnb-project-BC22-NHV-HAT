@@ -11,23 +11,23 @@ import RoomList from "pages/RoomDemo/RoomList";
 import Account from "component/Account/Account";
 
 function App() {
-    return (
-        <>
-            <Routes>
-                <Route path="/" element={<MainTemplate />}>
-                    <Route path="rooms/:locationId/:detailId" element={<RoomDetail />} />
-                    <Route path="rooms/:locationId" element={<Room />} />
-                    <Route path="host/:homes" element={<Host />} />
-                    <Route path="login" element={<Login />} />
-                    <Route path="signup" element={<Signup />} />
-                    <Route path="rooms/locationId/:locationId" element={<RoomList />} />
-                    <Route path="users/:userId" element={<Account />} />
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<MainTemplate />}>
+          <Route path="rooms/:locationId/:detailId" element={<RoomDetail />} />
+          {/* <Route path="rooms/:locationId" element={<Room />} /> */}
+          <Route path="host/:homes" element={<Host />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="rooms/locationId/:locationId" element={<RoomList />} />
+          <Route path="users/:userId" element={<Account />} />
 
-                    <Route index element={<Home />} />
-                </Route>
-            </Routes>
-        </>
-    );
+          <Route index element={<Home />} />
+        </Route>
+      </Routes>
+    </>
+  );
 }
 
 export default App;

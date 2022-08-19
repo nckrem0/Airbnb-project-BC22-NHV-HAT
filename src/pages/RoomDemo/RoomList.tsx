@@ -1,7 +1,6 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getRoomsList } from "slices/room";
-import { AppDispatch, RootState } from "store";
+import { useSelector } from "react-redux";
+
+import { RootState } from "store";
 import { BiFilterAlt } from "react-icons/bi";
 import { AiOutlineStar } from "react-icons/ai";
 
@@ -11,23 +10,15 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination } from "swiper";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { removeVietnameseTones } from "convert/ConvertVie";
-import { getListRoomRental } from "slices/listRoomDemo";
 
 const RoomList = () => {
-  const urlParams = useParams();
   const { data, isLoading, error } = useSelector(
     (state: RootState) => state.listRoomDemo
   );
+
   const navigation = useNavigate();
-
-  const dispatch = useDispatch<AppDispatch>();
-
-  useEffect(() => {
-    const locationId = String(urlParams.id);
-    dispatch(getListRoomRental(locationId));
-  }, [dispatch, urlParams.id]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -38,15 +29,14 @@ const RoomList = () => {
   const gotoRoomsByLocationId = (name: string, _id: string) => {
     navigation(`../rooms/${name}/${_id}`);
   };
-  console.log(data);
 
   return (
     <div className="overflow-hidden">
-      <div className="flex nb:flex-col-reverse lg:flex-row">
+      <div className="flex nb:flex-col-reverse lg:flex-row ">
         <div className="px-6 md:w-full lg:w-2/5 xl:w-2/5 2xl:w-2/5">
           <div className="flex justify-between pb-5">
             <div>
-              <span>Hơn 300 chỗ ở Ngày 14-15 tháng 6</span>
+              <span>Hơn 300 chỗ ở Ngày tháng 6</span>
               <h1>Chỗ ở tại khu vực mà bạn đã chọn</h1>
             </div>
             <div>
