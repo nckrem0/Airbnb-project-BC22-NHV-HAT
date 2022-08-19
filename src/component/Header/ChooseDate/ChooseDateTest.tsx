@@ -18,13 +18,14 @@ import Location from "pages/Demo/Location";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "store";
 import { useNavigate } from "react-router-dom";
+import { BiSearch } from "react-icons/bi";
 
 type Props = {
     openSelected: boolean;
     setSelected(value: boolean): void;
 };
 
-const ChooseDate = (props: Props) => {
+const ChooseDateTest = (props: Props) => {
     const [openDate, setOpenDate] = useState(false);
     const [addMoreGuests, setMoreGuests] = useState(false);
 
@@ -61,13 +62,21 @@ const ChooseDate = (props: Props) => {
 
     return (
         <>
-            <label className="h-16 py-2 px-8  hover:bg-gray-300 font-medium rounded-[32px] cursor-pointer   mr-4 ">
-                <div>
-                    <div className="pb-1">Địa Điểm</div>
-
-                    <Location setPickUpId={setPickUpId} />
-                </div>
-            </label>
+            <div className="p-10">
+                <label>
+                    <div className="border-solid border-[1px] rounded-lg shadow-lg ">
+                        <div className="p-5">
+                            <h1 className="pb-1 ">Bạn sẽ đi đâu ?</h1>
+                            <div className="flex border-solid border-[1px] rounded-lg px-5 pt-2">
+                                <BiSearch className="mr-2 mt-3" />
+                                <div className="mt-2">
+                                    <Location setPickUpId={setPickUpId} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+            </div>
 
             {openDate ? (
                 <>
@@ -161,4 +170,4 @@ const ChooseDate = (props: Props) => {
     );
 };
 
-export default ChooseDate;
+export default ChooseDateTest;
