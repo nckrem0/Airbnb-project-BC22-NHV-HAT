@@ -1,11 +1,11 @@
 import airbnbAPI from "services/airbnbAPI";
-import { Action, EnumThunkAction } from "enum/airbnb.enum";
+
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { IRoom } from "interfaces/rooms";
-import airbnbAPIDemo from "services/airbnbAPIDemo";
+
+import { IRoomDetails } from "interfaces/room-details";
 
 interface RoomState {
-  data: IRoom[];
+  data: IRoomDetails[];
   isLoading: boolean;
   error: string;
 }
@@ -45,4 +45,5 @@ const roomsListSlice = createSlice({
     });
   },
 });
+
 export default roomsListSlice.reducer;
