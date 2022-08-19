@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import ILocationList from "../interfaces/location-list";
 import { Action, EnumThunkAction } from "../enum/airbnb.enum";
 import airbnbAPI from "../services/airbnbAPI";
+import airbnbAPIDemo from "services/airbnbAPIDemo";
 
 interface LocationState {
   data: ILocationList[];
@@ -20,7 +21,7 @@ export const getLocationListDemo = createAsyncThunk(
   EnumThunkAction.GET_LOCATION_LIST,
   async () => {
     try {
-      const data = await airbnbAPI.getLocationList();
+      const data = await airbnbAPIDemo.getLocationList();
       return data;
     } catch (error) {
       throw error;

@@ -4,7 +4,7 @@
 
 @layer components {
   .navbar-content {
-    @apply relative  items-center px-4 -mb-1   hover:text-gray-400;
+    @apply relative text-black items-center px-4 mb-1   hover:text-gray-400;
   }
   .navbar-content::after {
     @apply content-[""] absolute w-full h-[2px] left-0 bottom-0 bg-gray-400;
