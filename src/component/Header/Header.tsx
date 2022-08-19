@@ -3,22 +3,24 @@ import { FaAirbnb } from "react-icons/fa";
 import { TbWorld } from "react-icons/tb";
 import Navbar from "./Navbar";
 import { FaSearch } from "react-icons/fa";
-
-import AddMoreGuests from "./AddMoreGuests";
 import ChooseDate from "./ChooseDate";
 import { useDispatch } from "react-redux";
-import { getLocationList } from "slices/location";
-import { IQueryLocation } from "interfaces/query";
 import { AppDispatch } from "store";
 import { HiOutlineFilter } from "react-icons/hi";
+import ChooseDateTest from "./ChooseDate/ChooseDateTest";
 
 const Header = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     const [openSelected, setSelected] = useState(false);
+    const [open, setOpen] = useState(false);
 
     const handleSelected = () => {
         setSelected(!openSelected);
+    };
+
+    const handleOpened = () => {
+        setOpen(!open);
     };
 
     return (
@@ -117,7 +119,10 @@ const Header = () => {
                 )}
             </div>
             <div className="fixed top-0 bg-white w-full px-10 py-5 nb:inline-flex md:hidden shadow-lg">
-                <button className="flex w-full justify-between items-center rounded-2xl border-solid border-[1px] px-5 shadow-lg">
+                <button
+                    className="flex w-full justify-between items-center rounded-2xl border-solid border-[1px] px-5 shadow-lg"
+                    onClick={() => handleOpened()}
+                >
                     <div className="flex items-center justify-start">
                         <div>
                             <FaSearch />
@@ -136,6 +141,13 @@ const Header = () => {
                         <HiOutlineFilter />
                     </div>
                 </button>
+                <div className="relative">
+                    {open ? (
+                        <div className="fixed top-0 left-0 bg-white w-full h-screen">
+                            <ChooseDateTest openSelected={openSelected} setSelected={setSelected} />
+                        </div>
+                    ) : null}
+                </div>
             </div>
         </div>
     );
