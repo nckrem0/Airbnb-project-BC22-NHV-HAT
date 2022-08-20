@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocationList } from "slices/location";
 import { AppDispatch, RootState } from "store";
@@ -84,4 +84,4 @@ const Location = () => {
     );
 };
 
-export default Location;
+export default memo(Location);

@@ -1,6 +1,6 @@
 import axios from "axios";
 import ILocationList from "interfaces/location-list";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GoLocation } from "react-icons/go";
 
@@ -82,4 +82,4 @@ const Location = (props: Props) => {
     );
 };
 
-export default Location;
+export default memo(Location);
