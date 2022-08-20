@@ -21,7 +21,13 @@ import { useNavigate } from "react-router-dom";
 import { getListRoomRental } from "slices/listRoomDemo";
 import { BiSearch } from "react-icons/bi";
 
-const ChooseDate = (props: any) => {
+type Props = {
+    closeSearch(value: boolean): void;
+    openSelected: boolean;
+
+    setSelected(value: boolean): void;
+};
+const ChooseDate = (props: Props) => {
     const [open, setOpen] = useState(true);
     const [openDate, setOpenDate] = useState(false);
     const [addMoreGuests, setMoreGuests] = useState(false);
@@ -60,10 +66,18 @@ const ChooseDate = (props: any) => {
     };
 
     const gotoRoomsByLocationId = (locationId: string) => {
-        navigation(`/rooms/locationId/${locationId}`);
+        {
+            pickUpId === ""
+                ? navigation(
+                      `/rooms/${startDate.getDate()}/${startDate.getMonth()}/${endDate.getDate()}/${endDate.getMonth()}/2s1a2s`
+                  )
+                : navigation(
+                      `/rooms/locationId/${startDate.getDate()}/${startDate.getMonth()}/${endDate.getDate()}/${endDate.getMonth()}/${locationId}`
+                  );
+        }
         setMoreGuests(false);
         setOpenDate(false);
-        setOpen(!open);
+        props.closeSearch(false);
     };
 
     return (
