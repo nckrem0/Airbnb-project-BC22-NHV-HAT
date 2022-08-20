@@ -9,21 +9,37 @@ import Signup from "pages/Signup";
 import RoomList from "pages/RoomDemo/RoomList";
 
 import Account from "component/Account/Account";
+import Header from "component/Header";
+import { useState } from "react";
 
 function App() {
+  const [getStartDate, setGetStartDate] = useState(new Date());
+  const [getEndDate, setGetEndDate] = useState(new Date());
+
   return (
     <>
+      <Header setGetEndDate={setGetEndDate} setGetStartDate={setGetStartDate} />
       <Routes>
         <Route path="/" element={<MainTemplate />}>
           <Route path="rooms/:locationId/:detailId" element={<RoomDetail />} />
-          {/* <Route path="rooms/:locationId" element={<Room />} /> */}
+          <Route
+            path="rooms/:startDate/:startMonth/:endDate/:endMonth/:locationId"
+            element={<Room />}
+          />
           <Route path="host/:homes" element={<Host />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
-          <Route path="rooms/locationId/:locationId" element={<RoomList />} />
+          <Route
+            path="rooms/locationId/:startDate/:startMonth/:endDate/:endMonth/:locationId"
+            element={<RoomList />}
+          />
           <Route path="users/:userId" element={<Account />} />
-
-          <Route index element={<Home />} />
+          <Route
+            index
+            element={
+              <Home getEndDate={getEndDate} getStartDate={getStartDate} />
+            }
+          />
         </Route>
       </Routes>
     </>
