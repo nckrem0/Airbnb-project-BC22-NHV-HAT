@@ -21,6 +21,8 @@ const Room = () => {
     (state: RootState) => state.room
   );
   const navigation = useNavigate();
+  const { startDate, endDate, startMonth, endMonth } = useParams();
+  const total = Number(endDate) - Number(startDate);
 
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
@@ -45,8 +47,21 @@ const Room = () => {
         <div className="px-6 md:w-full lg:w-2/5 xl:w-2/5 2xl:w-2/5">
           <div className="flex justify-between pb-5">
             <div>
-              <span>Hơn 300 chỗ ở Ngày 14-15 tháng 6</span>
-              <h1>Chỗ ở tại khu vực mà bạn đã chọn</h1>
+              {total !== 0 ? (
+                <span className="font-bold">
+                  Hơn 300 chỗ ở Ngày {startDate} tháng {startMonth} - Ngày{" "}
+                  {endDate} tháng
+                  {endMonth}
+                </span>
+              ) : (
+                <span className="font-bold">
+                  Hơn 300 chỗ ở Ngày {startDate} tháng {startMonth}
+                </span>
+              )}
+
+              <h1 className="text-gray-500">
+                Chỗ ở tại khu vực mà bạn đã chọn
+              </h1>
             </div>
             <div>
               <button className="flex items-center py-2 px-3 border-solid border-[1px] border-gray-400 rounded-lg">
@@ -60,7 +75,7 @@ const Room = () => {
               return (
                 <div
                   key={index}
-                  className="text-base cursor-pointer"
+                  className="text-base  cursor-pointer"
                   onClick={() =>
                     gotoRoomsByLocationId(
                       removeVietnameseTones(room.name),
@@ -87,7 +102,7 @@ const Room = () => {
                   </div>
                   <div className="flex justify-between">
                     <div>
-                      <h5 className="font-medium">{room?.name}</h5>
+                      <h5 className="font-bold">{room?.name}</h5>
                     </div>
                     <div className="flex items-center">
                       <AiOutlineStar />
@@ -99,22 +114,36 @@ const Room = () => {
                                         <p className="text-gray-500">{room?.latitude}</p>
                                     </div> */}
                   <div>
-                    <p className="text-gray-500">Ngày 07 - Ngày 12 tháng 10</p>
+                    {total != 0 && (
+                      <p className="text-gray-500">
+                        Ngày {startDate} tháng {startMonth} - Ngày {endDate}{" "}
+                        tháng
+                        {endMonth}
+                      </p>
+                    )}
                   </div>
-                  <div className="flex pb-5">
-                    <p className="font-medium">{`${room?.price.toLocaleString(
+                  <div className="flex pb-5 pt-2 ">
+                    <p className="font-bold ">{`${room?.price.toLocaleString(
                       "vi-VN"
                     )} VND/`}</p>
-                    <span className="font-normal">đêm</span>
+                    <span className="font-normal text-gray-500">đêm </span>
+                    {total != 0 && (
+                      <p className="font-bold">
+                        - Tổng{" "}
+                        {(
+                          Number(total < 0 ? 30 + total : total) *
+                          Number(room?.price)
+                        ).toLocaleString("vi-VN")}{" "}
+                        VND
+                      </p>
+                    )}
                   </div>
                 </div>
               );
             })}
           </div>
         </div>
-        <div className="hidden lg:inline-flex lg:flex-1">
-          {/* <Map searchResults={data} /> */}
-        </div>
+        <div className="hidden lg:inline-flex lg:flex-1"></div>
       </div>
     </div>
   );

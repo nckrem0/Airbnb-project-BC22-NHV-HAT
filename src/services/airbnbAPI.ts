@@ -46,7 +46,7 @@ const airbnbAPI = {
         return axiosClients.get<unknown, IAccount>(`/users/${userId}`);
     },
     getListRoomRental: (locationId: string) => {
-        return axiosClients.get<unknown, IRoom[]>(`/rooms?locationId=${locationId}`);
+        return axiosClients.get<unknown, IRoomDetails[]>(`/rooms?locationId=${locationId}`);
     },
 };
 

@@ -1,4 +1,4 @@
-import { useState, memo } from "react";
+import { useState, memo, useEffect, createContext } from "react";
 import { FaSearch } from "react-icons/fa";
 
 // import { DatePicker, Space } from "antd";
@@ -18,13 +18,16 @@ import Location from "pages/Demo/Location";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "store";
 import { useNavigate } from "react-router-dom";
+import { getListRoomRental } from "slices/listRoomDemo";
 
 type Props = {
-  openSelected: boolean;
-  setSelected(value: boolean): void;
+  setGetEndDate(value: Date): void;
+  setGetStartDate(value: Date): void;
 };
 
 const ChooseDate = (props: Props) => {
+  const { setGetEndDate, setGetStartDate } = props;
+
   const [openDate, setOpenDate] = useState(false);
   const [addMoreGuests, setMoreGuests] = useState(false);
 
@@ -35,6 +38,15 @@ const ChooseDate = (props: Props) => {
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+
+  // get data a list of rooms for rent by location
+  useEffect(() => {
+    dispatch(getListRoomRental(pickUpId));
+  }, [pickUpId]);
+
+  useEffect(() => {
+    setOpenDate(false);
+  }, [startDate < endDate]);
 
   const navigation = useNavigate();
 
@@ -52,9 +64,20 @@ const ChooseDate = (props: Props) => {
     endDate: endDate,
     key: "selection",
   };
+  setGetStartDate(startDate);
+  setGetEndDate(endDate);
 
   const gotoRoomsByLocationId = (locationId: string) => {
-    navigation(`/rooms/${locationId}`);
+    {
+      pickUpId === ""
+        ? navigation(
+            `/rooms/${startDate.getDate()}/${startDate.getMonth()}/${endDate.getDate()}/${endDate.getMonth()}/2s1a2s`
+          )
+        : navigation(
+            `/rooms/locationId/${startDate.getDate()}/${startDate.getMonth()}/${endDate.getDate()}/${endDate.getMonth()}/${locationId}`
+          );
+    }
+
     setMoreGuests(false);
     setOpenDate(false);
   };
@@ -149,10 +172,10 @@ const ChooseDate = (props: Props) => {
         />
 
         <button
-          className=" mt-[7px] mr-[10px] h-12 items-center flex bg-red-400 p-3 text-white  rounded-[32px] cursor-pointer "
+          className=" mt-[7px] mr-[10px] h-12 items-center flex bg-rose-500 p-3 text-white  rounded-[32px] "
           onClick={() => gotoRoomsByLocationId(pickUpId)}
         >
-          <FaSearch className="ml-2" />
+          <FaSearch className="ml-2 bg-rose-500" />
           <span>Tìm Kiếm</span>
           {/* <RoomList /> */}
         </button>

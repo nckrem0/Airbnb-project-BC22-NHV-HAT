@@ -3,88 +3,85 @@
 @tailwind utilities;
 
 @layer components {
-  .navbar-content {
-    @apply relative  items-center px-4 -mb-1   hover:text-gray-400;
-  }
-  .navbar-content::after {
-    @apply content-[""] absolute w-full h-[2px] left-0 bottom-0 bg-gray-400;
-  }
+    .navbar-content {
+        @apply relative text-black items-center px-4 mb-1   hover:text-gray-400;
+    }
+    .navbar-content::after {
+        @apply content-[""] absolute w-full h-[2px] left-0 bottom-0 bg-gray-400;
+    }
 
-  .underline-hover::after {
-    @apply scale-x-0 scale-y-100 transition ease-linear duration-300;
-  }
-  .underline-hover:hover::after {
-    @apply scale-100;
-  }
+    .underline-hover::after {
+        @apply scale-x-0 scale-y-100 transition ease-linear duration-300;
+    }
+    .underline-hover:hover::after {
+        @apply scale-100;
+    }
 }
 
-.swiper-horizontal
-  > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic
-  .swiper-pagination-bullet,
-.swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic
-  .swiper-pagination-bullet {
-  background-color: white;
+.swiper-horizontal > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+    background-color: white;
 }
 
 .swiper {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
 
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
 }
 
 .swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .swiper {
-  width: 100%;
-  height: 300px;
-  margin: 20px auto;
+    width: 100%;
+    height: 300px;
+    margin: 20px auto;
 }
 .append-buttons {
-  text-align: center;
-  margin-top: 20px;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .append-buttons button {
-  display: inline-block;
-  cursor: pointer;
-  border: 1px solid #007aff;
-  color: #007aff;
-  text-decoration: none;
-  padding: 4px 10px;
-  border-radius: 4px;
-  margin: 0 10px;
-  font-size: 13px;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #007aff;
+    color: #007aff;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin: 0 10px;
+    font-size: 13px;
 }
 .swiper-button-prev,
 .swiper-button-next {
-  display: none;
+    display: none;
 }
 .swiper-pagination-fraction {
-  display: none;
+    display: none;
 }
 
 /* host */
@@ -95,41 +92,56 @@
 } */
 
 .swiper .swiper-initialized .swiper-horizontal .swiper-pointer-events > .host {
-  width: 100%;
-  height: 500px;
-  margin: 20px auto;
+    width: 100%;
+    height: 500px;
+    margin: 20px auto;
 }
 
 .choosedate {
-  inset: 0px 0px -1px;
-  border-radius: 8px 8px 0px 0px;
-  border-top-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
-  border-right-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
-  border-bottom-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
-  border-left-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
-  border-width: 1px;
-  z-index: 0;
+    inset: 0px 0px -1px;
+    border-radius: 8px 8px 0px 0px;
+    border-top-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
+    border-right-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
+    border-bottom-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
+    border-left-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
+    border-width: 1px;
+    z-index: 0;
 }
 .checkin {
-  background: var(--comboInputGroup_backgroundColor, none);
-  border-radius: 8px 0px 0px 0px;
-  inset: 0px 0px -1px;
-  border-right-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
-  border-width: 1px;
+    background: var(--comboInputGroup_backgroundColor, none);
+    border-radius: 8px 0px 0px 0px;
+    inset: 0px 0px -1px;
+    border-right-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
+    border-width: 1px;
 }
 .checkout {
-  border-radius: 0px 8px 0px 0px;
-  background: var(--comboInputGroup_backgroundColor, none);
-  inset: 0px 0px -1px;
-  border-width: 1px;
+    border-radius: 0px 8px 0px 0px;
+    background: var(--comboInputGroup_backgroundColor, none);
+    inset: 0px 0px -1px;
+    border-width: 1px;
 }
 
 .addguests {
-  background: var(--comboInputGroup_backgroundColor, none);
-  border-radius: 0px 0px 8px 8px;
-  inset: 0px 0px -1px;
-  border-right-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
-  border-bottom-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
-  border-left-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
-  border-width: 1px;
+    background: var(--comboInputGroup_backgroundColor, none);
+    border-radius: 0px 0px 8px 8px;
+    inset: 0px 0px -1px;
+    border-right-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
+    border-bottom-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
+    border-left-color: var(--comboInputGroup_borderColor, var(--iw-ihca));
+    border-width: 1px;
+}
+.rdrDefinedRangesWrapper {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-top-right-radius: 1.333em;
+    border-bottom-right-radius: 1.333em;
+    right: 2px;
+    right: 0px;
+    display: none;
+}
+@media only screen and (min-width: 630px) {
+    .rdrDefinedRangesWrapper {
+        display: inline;
+    }
 }

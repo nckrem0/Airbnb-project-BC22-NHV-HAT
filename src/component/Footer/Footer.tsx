@@ -88,7 +88,7 @@ const Footer = () => {
                         </ul>
                     </div>
                 </div>
-                <div className=" flex py-8 px-10 nb:border-solid border-b-[1px] lg:flex-row lg:justify-between md:flex-col-reverse mb:flex-col-reverse">
+                <div className=" flex py-8 px-10 nb:border-solid border-b-[1px] lg:flex-row lg:justify-between nb:flex-col-reverse ">
                     <div>
                         <div className="md:flex lg:justify-center md:justify-center sm:justify-center">
                             <div className="pr-5 md:text-sm">
