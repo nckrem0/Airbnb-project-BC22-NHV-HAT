@@ -20,7 +20,7 @@ const Location = (props: Props) => {
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(getLocationListDemo());
-    }, []);
+    }, [dispatch]);
 
     const searchLocations = (event: any) => {
         setLocations(event.target.value);

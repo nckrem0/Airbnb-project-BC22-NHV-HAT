@@ -11,6 +11,7 @@ import RoomList from "pages/RoomDemo/RoomList";
 import Account from "component/Account/Account";
 import Header from "component/Header";
 import { useState } from "react";
+import RoomWithMap from "pages/Room/RoomWithMap";
 
 function App() {
   const [getStartDate, setGetStartDate] = useState(new Date());
@@ -25,6 +26,10 @@ function App() {
           <Route
             path="rooms/:startDate/:startMonth/:endDate/:endMonth/:locationId"
             element={<Room />}
+          />
+          <Route
+            path="rooms/:locationId"
+            element={<RoomWithMap />}
           />
           <Route path="host/:homes" element={<Host />} />
           <Route path="login" element={<Login />} />
