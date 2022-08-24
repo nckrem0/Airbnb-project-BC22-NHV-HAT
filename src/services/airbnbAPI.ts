@@ -48,6 +48,20 @@ const airbnbAPI = {
     getListRoomRental: (locationId: string) => {
         return axiosClients.get<unknown, IRoomDetails[]>(`/rooms?locationId=${locationId}`);
     },
+    getRoomsWithMap: (locationId?: string, limit?: number, offset?: number) => {
+        if (typeof limit === "undefined") {
+            limit = DefaultPerPage.PERPAGE;
+        }
+        let url = `/rooms?limit=${limit}`;
+
+        if (typeof offset !== "undefined") {
+            url += `&offset=${offset}`;
+        }
+        if (typeof locationId !== "undefined") {
+            url += `&locationId=${locationId}`;
+        }
+        return axiosClients.get<unknown, IRoom[]>(url);
+    },
 };
 
 export default airbnbAPI;

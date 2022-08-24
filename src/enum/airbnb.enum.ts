@@ -8,6 +8,7 @@ export enum EnumThunkAction {
     GET_LOCATION_LIST_DEMO = "/locations",
     GET_ACCOUNT = "/account",
     ROOMSLIST = "room/getListRoomRental",
+    ROOM_WITH_MAP = "room/getRoomList"
 }
 
 export enum Action {
@@ -19,6 +20,7 @@ export enum Action {
     REGISTER = "RegisterAPI",
     ACCOUNT = "account",
     ROOMSLIST = "getListRoomRental",
+    ROOM_WITH_MAP = "getListRoomWithMap"
 }
 export enum ACTION_NAME {
     REGISTER = "register",

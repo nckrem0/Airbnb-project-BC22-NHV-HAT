@@ -18,7 +18,7 @@ const initialState: LocationState = {
 };
 
 export const getLocationListDemo = createAsyncThunk(
-  EnumThunkAction.GET_LOCATION_LIST,
+  EnumThunkAction.GET_LOCATION_LIST_DEMO,
   async () => {
     try {
       const data = await airbnbAPIDemo.getLocationList();
