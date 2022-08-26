@@ -21,16 +21,13 @@ const Room = () => {
     (state: RootState) => state.room
   );
   const navigation = useNavigate();
-  const { startDate, endDate, startMonth, endMonth } = useParams();
+  const { startDate, endDate, startMonth, endMonth, locationId } = useParams();
   const total = Number(endDate) - Number(startDate);
 
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    const split: any = useParam.locationId?.split("&");
-    const locationName = split[0];
-    const locationId = split[1];
-    dispatch(getRoomsList({ locationName, locationId }));
-  }, [dispatch, useParam.locationId]);
+    dispatch(getRoomsList({ locationId }));
+  }, [dispatch, locationId]);
   if (isLoading) {
     return <h1>Loading...</h1>;
   }

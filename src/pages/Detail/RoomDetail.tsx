@@ -51,7 +51,7 @@ const RoomDetail = (props: Props) => {
                             <span>Chủ nhà siêu cấp</span>
                         </div>
                         <div className="cursor-pointer nb:hidden md:inline-flex">
-                            <p>{data.locationId.name}</p>
+                            <p>{data.name}</p>
                         </div>
                     </div>
                     <div className="flex">
@@ -84,7 +84,7 @@ const RoomDetail = (props: Props) => {
                                 <span>Chủ nhà siêu cấp</span>
                             </div>
                             <div className="cursor-pointer underline">
-                                <p>{data.locationId.name}</p>
+                                <p>{data.name}</p>
                             </div>
                         </div>
                     </div>
