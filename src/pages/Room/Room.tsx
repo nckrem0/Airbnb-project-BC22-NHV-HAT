@@ -114,7 +114,7 @@ const Room = () => {
                                         <p className="text-gray-500">{room?.latitude}</p>
                                     </div> */}
                   <div>
-                    {total != 0 && (
+                    {total !== 0 && (
                       <p className="text-gray-500">
                         Ngày {startDate} tháng {startMonth} - Ngày {endDate}{" "}
                         tháng
@@ -123,17 +123,17 @@ const Room = () => {
                     )}
                   </div>
                   <div className="flex pb-5 pt-2 ">
-                    <p className="font-bold ">{`${room?.price.toLocaleString(
+                    <p className="font-bold ">{`${room?.price?.toLocaleString(
                       "vi-VN"
                     )} VND/`}</p>
                     <span className="font-normal text-gray-500">đêm </span>
-                    {total != 0 && (
+                    {total !== 0 && (
                       <p className="font-bold">
                         - Tổng{" "}
                         {(
                           Number(total < 0 ? 30 + total : total) *
                           Number(room?.price)
-                        ).toLocaleString("vi-VN")}{" "}
+                        )?.toLocaleString("vi-VN")}{" "}
                         VND
                       </p>
                     )}
