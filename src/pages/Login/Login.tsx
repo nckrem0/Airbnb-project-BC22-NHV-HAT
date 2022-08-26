@@ -30,17 +30,13 @@ const Login = () => {
     dispatch(login(values));
   };
 
-  const onError = (errors: FieldErrors<LoginValues>) => {
-    console.log(errors);
-  };
+  const onError = (errors: FieldErrors<LoginValues>) => {};
 
   // Kiểm tra currentUser có phải là object rỗng hay không, nếu không phải => user đã đăng nhập
   if (Object.keys(currentUser).length) {
     // Redirect user về trang Home
     return <Navigate to="/" replace />;
   }
-
-  console.log(error);
 
   return (
     <>

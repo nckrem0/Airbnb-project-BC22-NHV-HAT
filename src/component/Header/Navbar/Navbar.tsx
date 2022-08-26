@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { logout } from "slices/auth";
 
 import { RootState } from "store";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [openAccount, setOpenAccount] = useState(false);
+  const dispatch = useDispatch();
   const { currentUser, isLoading, error } = useSelector(
     (state: RootState) => state.auth
   );
+  const navigation = useNavigate();
 
   const handleMenu = () => {
     {
@@ -19,10 +22,10 @@ const Navbar = () => {
         ? setOpenAccount(!openAccount)
         : setOpenMenu(!openMenu);
     }
-
-    // Kiểm tra currentUser có phải là object rỗng hay không, nếu không phải => user đã đăng nhập
-
-    // Redirect user về trang Home
+  };
+  const handleLogOut = () => {
+    dispatch(logout());
+    setOpenAccount(false);
   };
 
   return (
@@ -32,13 +35,17 @@ const Navbar = () => {
         <FaUserCircle className="ml-2" />
       </button>
       {openAccount && (
-        <div className=" list-none absolute bottom-[-17rem] right-48 bg-gray-500  shadow-lg text-left text-sm p-5 text-[10px] rounded-b-lg ">
+        <div className=" list-none absolute top-28 right-48 bg-white  shadow-lg text-left text-sm p-5 text-[10px] rounded-b-lg ">
           <div className="flex flex-col">
             <Link to="/users" className="cursor-poiter my-5 text-[16px] ">
               Thông Tin Cá Nhân
             </Link>
 
-            <Link to="/login" className="cursor-poiter my-5 text-[16px]">
+            <Link
+              to="/login"
+              className="cursor-poiter my-5 text-[16px] "
+              onClick={handleLogOut}
+            >
               Đăng Xuất
             </Link>
             <hr />
@@ -55,12 +62,16 @@ const Navbar = () => {
       )}
 
       {openMenu && (
-        <div className=" list-none absolute bottom-[-17rem] right-48 bg-gray-500  shadow-lg text-left text-sm p-5 text-[10px] rounded-b-lg ">
+        <div className=" list-none absolute top-28 right-48 bg-white shadow-2xl text-left text-sm p-5 text-[10px] rounded-b-lg ">
           <div className="flex flex-col">
             <Link to="/signup" className="cursor-poiter my-5 text-[16px] ">
               Đăng Ký
             </Link>
-            <Link to="/login" className="cursor-poiter my-5 text-[16px]">
+            <Link
+              to="/login"
+              className="cursor-poiter my-5 text-[16px]"
+              onClick={() => setOpenMenu(false)}
+            >
               Đăng Nhập
             </Link>
             <hr />
