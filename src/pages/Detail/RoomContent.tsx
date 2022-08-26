@@ -166,10 +166,10 @@ const RoomContent = (props: Props) => {
                             </div>
                         </div>
                         <div className="py-5">
-                            <div className="choosedate">
+                            <div className="choosedate z-50">
                                 <ChooseDateBooking />
                             </div>
-                            <div className="addguests w-full">
+                            <div className="addguests w-full relative cursor-pointer">
                                 <AddGuests />
                             </div>
                         </div>

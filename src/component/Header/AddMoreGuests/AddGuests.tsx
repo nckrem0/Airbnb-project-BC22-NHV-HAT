@@ -98,7 +98,7 @@ const AddGuests = () => {
           </div>
         </div>
       )}
-      <div className="px-3 py-2">
+      <div className="px-5 py-2">
         <div className="pb-1">Khách</div>
         <div className="text-gray-400 text-sm">Thêm khách</div>
       </div>
