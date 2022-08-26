@@ -28,7 +28,7 @@ function App() {
             element={<Room />}
           />
           <Route path="rooms/:locationId" element={<RoomWithMap />} />
-          <Route path="host/:homes" element={<Host />} />
+          <Route path="host" element={<Host />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route

@@ -1,7 +1,7 @@
 import { useForm, FieldErrors } from "react-hook-form";
 import { TextInput, Button, Space } from "@mantine/core";
 import { useSelector, useDispatch } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { AppDispatch, RootState } from "store";
 import { login } from "slices/auth";
 
@@ -42,10 +42,8 @@ const Login = () => {
     <>
       <div className="flex flex-col max-w-md ml-auto mr-auto mt-10 p-6 rounded-md sm:p-10 bg-gray-900 text-gray-100">
         <div className="mb-8 text-center">
-          <h1 className="my-3 text-4xl font-bold">Sign in</h1>
-          <p className="text-sm text-gray-400">
-            Sign in to access your account
-          </p>
+          <h1 className="my-3 text-4xl font-bold">Đăng Nhập</h1>
+          <p className="text-sm text-gray-400">Đăng Nhập Tài Khoản Của Bạn</p>
         </div>
         <form
           className="space-y-12 ng-untouched ng-pristine ng-valid"
@@ -53,7 +51,7 @@ const Login = () => {
         >
           <div className="space-y-4">
             <div>
-              <label className="block mb-2 text-sm">Email address</label>
+              <label className="block mb-2 text-sm">Email Đăng Kí</label>
               <TextInput
                 type="text"
                 placeholder="Email@gmail.com"
@@ -70,14 +68,14 @@ const Login = () => {
             <div>
               <div className="flex justify-between mb-2">
                 <label htmlFor="password" className="text-sm">
-                  Password
+                  Mật Khẩu
                 </label>
                 <a
                   rel="noopener noreferrer"
                   href="#"
                   className="text-xs hover:underline text-gray-400"
                 >
-                  Forgot password?
+                  Quên Mật Khẩu?
                 </a>
               </div>
 
@@ -108,18 +106,14 @@ const Login = () => {
                 className="w-full px-8 py-3 font-semibold rounded-md bg-violet-400 text-gray-900"
                 disabled={isLoading}
               >
-                Sign in
+                Đăng Nhập
               </button>
             </div>
             <p className="px-6 text-sm text-center text-gray-400">
-              Don't have an account yet?
-              <a
-                rel="noopener noreferrer"
-                href="#"
-                className="hover:underline text-violet-400"
-              >
-                Sign up
-              </a>
+              Bạn Chưa Có Tài Khoản Đăng Nhập?
+              <Link to="/signup" className="hover:underline text-violet-400">
+                Đăng Kí
+              </Link>
               .
             </p>
           </div>
