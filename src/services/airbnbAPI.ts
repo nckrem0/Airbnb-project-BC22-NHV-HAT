@@ -32,7 +32,7 @@ const airbnbAPI = {
             url += `&offset=${offset}`;
         }
         if (typeof locationId !== "undefined") {
-            url += `/rooms?locationId=${locationId}`;
+            url += `&locationId=${locationId}`;
         }
         return axiosClients.get<unknown, IRoom[]>(url);
     },
