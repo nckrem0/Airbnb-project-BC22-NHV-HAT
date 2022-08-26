@@ -114,13 +114,17 @@ const RoomList = () => {
                     )}
                   </div>
                   <div className="flex pb-5 pt-2">
-                    <p className="font-bold">{`${room?.price} VND/`}</p>
+                    <p className="font-bold">{`${room?.price.toLocaleString(
+                      "vi-VN"
+                    )} VND/`}</p>
                     <span className="font-normal text-gray-500">đêm </span>
                     {total !== 0 && (
                       <p className="font-bold">
                         - Tổng{" "}
-                        {Number(total < 0 ? 30 + total : total) *
-                          Number(room?.price)}{" "}
+                        {(
+                          Number(total < 0 ? 30 + total : total) *
+                          Number(room?.price)
+                        ).toLocaleString("vi-VN")}{" "}
                         VND
                       </p>
                     )}

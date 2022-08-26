@@ -7,4 +7,5 @@ export interface CurrentUser {
   birthday: string;
   address: string;
   accessToken: string;
+  token: string;
 }
