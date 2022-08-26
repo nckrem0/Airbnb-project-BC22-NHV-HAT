@@ -88,7 +88,9 @@ const Header = (props: Props) => {
               </section>
 
               <div className="items-center text-black font-medium flex-shrink-0 hidden lg:flex">
-                <span>Trở Thành Chủ Nhà</span>
+                <Link to="/host" className="cursor-pointer">
+                  Trở Thành Chủ Nhà
+                </Link>
                 <button className="ml-5 text-[25px]">
                   <TbWorld />
                 </button>
@@ -136,7 +138,9 @@ const Header = (props: Props) => {
               </section>
 
               <div className="items-center font-medium text-black flex-shrink-0 hidden lg:flex">
-                <span className="">Trở Thành Chủ Nhà</span>
+                <Link to="/host" className="cursor-pointer">
+                  Trở Thành Chủ Nhà
+                </Link>
                 <button className="ml-5 text-[25px]">
                   <TbWorld />
                 </button>

@@ -3,6 +3,7 @@ import { ISingup } from "interfaces/signup.interfaces";
 
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { addRegister } from "slices/signup";
 import { AppDispatch, RootState } from "store";
 
@@ -11,10 +12,12 @@ type Props = {};
 const Signup = (props: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const register = useSelector((state: RootState) => state.signup);
+  const navigation = useNavigate();
 
   const [registerState, setRegisterState] = useState<ISingup>({});
   const handleRegister = () => {
     dispatch(addRegister(registerState));
+    navigation(`/login`);
   };
 
   const onChageText = (
@@ -26,8 +29,8 @@ const Signup = (props: Props) => {
   };
 
   return (
-    <div className="bg-gray-300  items-center mt-24 m-auto flex flex-col max-w-md p-6 rounded-md drop-shadow-2xl ">
-      <h1 className="my-3 text-4xl font-bold">Login</h1>
+    <div className="bg-gray-500  items-center mt-17  m-auto flex flex-col max-w-md p-6 rounded-md drop-shadow-2xl ">
+      <h1 className="my-3 text-4xl font-bold">Đăng Kí</h1>
       <form>
         <TextInput
           type="text"
@@ -81,10 +84,10 @@ const Signup = (props: Props) => {
 
         <Button
           type="submit"
-          className="bg-violet-500 hover:bg-none mt-5 items-center"
+          className="bg-violet-500 ml-[2rem] hover:bg-none mt-5 items-center"
           onClick={handleRegister}
         >
-          Đăng Nhập
+          Đăng Kí
         </Button>
       </form>
     </div>

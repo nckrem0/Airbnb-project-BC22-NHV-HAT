@@ -37,7 +37,11 @@ const Navbar = () => {
       {openAccount && (
         <div className=" list-none absolute top-28 right-48 bg-white  shadow-lg text-left text-sm p-5 text-[10px] rounded-b-lg ">
           <div className="flex flex-col">
-            <Link to="/users" className="cursor-poiter my-5 text-[16px] ">
+            <Link
+              to="/users"
+              className="cursor-poiter my-5 text-[16px] "
+              onClick={() => setOpenMenu(false)}
+            >
               Thông Tin Cá Nhân
             </Link>
 
@@ -64,7 +68,11 @@ const Navbar = () => {
       {openMenu && (
         <div className=" list-none absolute top-28 right-48 bg-white shadow-2xl text-left text-sm p-5 text-[10px] rounded-b-lg ">
           <div className="flex flex-col">
-            <Link to="/signup" className="cursor-poiter my-5 text-[16px] ">
+            <Link
+              to="/signup"
+              className="cursor-poiter my-5 text-[16px] "
+              onClick={() => setOpenMenu(false)}
+            >
               Đăng Ký
             </Link>
             <Link
